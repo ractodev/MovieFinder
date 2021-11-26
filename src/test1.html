@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const React={createElement:Vue.h};
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <title>MovieFinder</title>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
+</head>
+<body>
+    <div id="app"></div>
+    <h1 class="page_header">Welcome To Our Login-View!</h1>
+</body>
+
+    <script src="js/apiConfig.js"></script>
+    <script src="js/imdbSource.js"></script>
+    <!-- Model -->
+    <script src="js/app.js" type="text/jsx"></script>
+    <!-- View -->
+    <script src="js/views/searchView.js" type="text/jsx"></script>
+    <!-- Presenter -->
+    <script src="vuejs/searchPresenter.js" type="text/jsx"></script>
+
+
+
+
+    <!-- Deploy Components-->
+    <script type="text/jsx">
+        Vue.render(<SearchFormView/>, document.getElementById("app"));
+    </script>
+</html>

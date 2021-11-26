@@ -1,0 +1,2 @@
+//IMDB API DETAILS
+const IMDB_API_KEY="3e07edfc3bmshfd7058efe72b813p1e91cejsna65ab7d09285";
