@@ -1,11 +1,39 @@
 class DataModel{
-    constructor(watchlist= [], currentTitle = null) {
-        this.watchlist = null; 
+    constructor(watchlist= [], currentTitle = null, observers = []) {
+        this.watchlist = watchlist; 
         this.currentTitle = currentTitle;
+        this.observers = observers;
     }
 
-    setCurrentTitle(id) {
-        this.currentTitle = id;
+    setTitles(watchlist) { 
+        this.watchlist= [...watchlist]; 
+        this.notifyObservers();
+    }
+
+    setCurrentTitle(id){
+        if(this.currentTitle === id) {
+            return;
+        }
+        else {
+            this.currentTitle = id;
+        }
+
+        this.currentTitleDetails= null;
+        this.currentTitleError= null;
+        this.notifyObservers();
+
+        if(this.currentTitle)
+            ImdbSource.imdbSearchTitle(this.currentTitle)
+                .then( data => {
+                    if(this.currentTitle === id) {
+                        this.currentTitleDetails = data;
+                        this.notifyObservers();
+                    }})
+                .catch( err => {
+                    if( this.currentTitle === id) {
+                        this.currentTitleError = err;
+                        this.notifyObservers();}
+                    })          
     }
 
     addToWatchlist(title) {if(!this.watchlist.includes(title)) {

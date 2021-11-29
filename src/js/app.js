@@ -2,7 +2,7 @@ function RenderTest(){ console.log("Vue sub-component render test"); return fals
 function App(props){     
      return  ( 
           <div>
-               <SearchPresenter/>
+               <SearchPresenter model={props.model}/>
                <RenderTest />
           </div>  
      );

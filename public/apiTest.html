@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script>
+            const React={createElement:Vue.h};
+        </script>
+        <link rel="stylesheet" href="style.css">
+        <title>MovieFinder</title>
+    </head>
+    <body>
+        <h1 class="page_header">Welcome To MovieFinder!</h1>
+        <div id="app"></div>
+    </body>
+
+    <!-- API -->
+    <script src="../src/js/apiConfig.js"></script>
+    <script src="../src/js/imdbSource.js"></script>
+    <!-- Model -->
+    <script src="../src/js/app.js" type="text/jsx"></script>
+    <script src="../src/js/model.js" type="text/jsx"></script>
+    <script src="../src/js/dataModel.js" type="text/jsx"></script>
+    <!-- View -->
+    <script src="../src/js/views/searchView.js" type="text/jsx"></script>
+    <script src="../src/js/views/promiseNoData.js" type="text/jsx"></script>
+    <!-- Presenter -->
+    <script src="../src/vuejs/searchPresenter.js" type="text/jsx"></script>
+
+
+    <!-- Deploy Components-->
+    <script type="text/jsx">
+        Vue.render(
+            <div>
+                <SearchPresenter/>
+            </div>
+            , document.getElementById("app"));
+    </script>
+
+</html>

@@ -3,8 +3,21 @@ function SearchFormView(props) {
     return (
         <div>
             <label>Search movies or series </label>
-            <input onInput={event=>props.onText(event.target.value)} type="search"/>
-            <button onClick={event=>props.onSearch(ImdbSource.imdbSearchTitle(event.target.value))} class="searchButton">Search</button>
+            <input onChange={event=>props.onText(event.target.value)}/>
+            <button class = "imageDiv" onClick={() => props.onSearch()}>Search!</button>
         </div>        
+    );
+}
+
+function SearchResultsView(props){
+    return(
+        <div>
+            {props.searchResults.map( title =>
+            <span class="searchResult" key={title.id}
+                  onClick={()=> props.titleChosen(title.id)}>
+                <img src={title.image} height={100}/>
+                <div>{title.title}</div>
+            </span> )}
+        </div>
     );
 }

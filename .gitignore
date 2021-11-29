@@ -23,4 +23,4 @@ pnpm-debug.log*
 *.sw?
 
 # Config Files
-**/js/*Config.js
+src/js/*Config.js

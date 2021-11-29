@@ -1,3 +1,35 @@
-function SearchPresenter(props) {
-    return <SearchFormView/>
+const SearchPresenter = {
+    data(){
+        return {promise: null, data: null,
+            error: null, searchQuery: ""/*, searchType: "" */};
+        },
+    props: ["model"],
+    created() {
+        this.promise = ImdbSource.imdbSearchTitle({});
+    },
+    watch:{
+        'promise': { immediate:true,
+            handler(){
+                this.data= this.error= null;
+                if(this.promise){
+                    const p= this.promise;
+                    this.promise.then(dt=>{if(this.promise===p)this.data=dt;})
+                        .catch(er=>{if(this.promise===p)this.error = er});
+                }
+            }
+        }
+    },
+    render(){
+        return <div>
+            <SearchFormView //options={["starter", "main course", "dessert"]}
+                onText={x => this.searchQuery = x}
+                //onDishType={x => this.searchType = x}
+                onSearch={ () => this.promise = ImdbSource.imdbSearchTitle(this.searchQuery)}
+            />
+            {promiseNoData(this.promise, this.data, this.error) ||
+            <SearchResultsView searchResults={this.data}
+                               titleChosen={title => this.model.setCurrentTitle(title)}
+            />}
+        </div>
+    }
 }
