@@ -1,2 +1,3 @@
 //IMDB API DETAILS
-const IMDB_API_KEY="3e07edfc3bmshfd7058efe72b813p1e91cejsna65ab7d09285";
+const IMDB_BASE_URL="https://imdb-api.com/en/API/";
+const IMDB_API_KEY="k_texsdxb8";
