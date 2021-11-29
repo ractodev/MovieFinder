@@ -21,14 +21,14 @@ const SearchPresenter = {
     },
     render(){
         return <div>
-            <SearchFormView //options={["starter", "main course", "dessert"]}
-                onText={x => this.searchQuery = x}
-                //onDishType={x => this.searchType = x}
-                onSearch={ () => this.promise = ImdbSource.imdbSearchTitle(this.searchQuery)}
+            <SearchFormView options={["Movie/Series", "Actor Appearence"]}
+                onText={x=>this.searchQuery = x}
+                //onSearchType={x => this.searchType = x}
+                onSearch={()=>this.promise =ImdbSource.imdbSearchTitle(this.searchQuery)}
             />
             {promiseNoData(this.promise, this.data, this.error) ||
             <SearchResultsView searchResults={this.data}
-                               titleChosen={title => this.model.setCurrentTitle(title)}
+                               titleChosen={title=>this.model.setCurrentTitle(title)}
             />}
         </div>
     }

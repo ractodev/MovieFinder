@@ -3,9 +3,13 @@ function SearchFormView(props) {
     return (
         <div>
             <label>Search movies or series </label>
-            <input onChange={event=>props.onText(event.target.value)}/>
-            <button class = "imageDiv" onClick={() => props.onSearch()}>Search!</button>
-        </div>        
+            <input id="searchBox" onChange={event=>props.onText(event.target.value)}/>
+            <select /*onChange={event=>props.onSearchType(event.target.value)}*/>
+                <option key="Choose" selected hidden>Choose:</option>
+                {props.options.map(function(opt){return <option key={opt}>{opt}</option>})}
+            </select>
+            <button id="searchButton" class = "imageDiv" onClick={() => props.onSearch()}>Search!</button>
+        </div>
     );
 }
 
@@ -15,8 +19,8 @@ function SearchResultsView(props){
             {props.searchResults.map( title =>
             <span class="searchResult" key={title.id}
                   onClick={()=> props.titleChosen(title.id)}>
-                <img src={title.image} height={100}/>
-                <div>{title.title}</div>
+                <img src={title.image} height={100} width={70}/>
+                <div class="resultTitle">{title.title}</div>
             </span> )}
         </div>
     );
