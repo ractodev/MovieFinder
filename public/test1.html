@@ -34,6 +34,9 @@
 
     <!-- Deploy Components-->
     <script type="text/jsx">
-        Vue.render(<SearchFormView/>, document.getElementById("app"));
+        Vue.render(<SearchFormView
+                    onSearch{()=>console.log("user wants to search!")}
+                    onText{txt=>console.log("user entered: ", txt)}
+                    />, document.getElementById("app"));
     </script>
 </html>
