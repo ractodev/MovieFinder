@@ -4,7 +4,7 @@ function SearchFormView(props) {
         <div>
             <label>Search movies or series </label>
             <input onInput={event=>props.onText(event.target.value)} type="search"/>
-            <button onClick={event=>props.onSearch(event.target.value)} class="searchButton">Search</button>
+            <button onClick={event=>props.onSearch(ImdbSource.imdbSearchTitle(event.target.value))} class="searchButton">Search</button>
         </div>        
     );
 }

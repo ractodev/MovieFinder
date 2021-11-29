@@ -29,10 +29,11 @@
 
     <!-- Deploy Components-->
     <script type="text/jsx">
-        Vue.render(<SearchFormView
-                    onSearch={()=>console.log("user wants to search!")}
-                    onText={txt=>console.log("user entered: ", txt)}
-                    />, document.getElementById("app"));
+        Vue.render(
+            <div>
+                <SearchPresenter/>
+            </div>
+            , document.getElementById("app"));
     </script>
 
 </html>

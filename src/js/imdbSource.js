@@ -12,7 +12,7 @@ const ImdbSource={
         .catch(console.error);
     }
     ,
-    imdbGetTitle(params) {
+    imdbSearchTitle(params) {
         //function to retrieve basic title data such as title, description, title id and image
         let query = params.replace(/ /g, '%20');    //URLSearchParams converts blanks to '+' instead of '%20' required in the IMDB API?
         return ImdbSource.imdbApiCall("SearchTitle/" + IMDB_API_KEY + "/" + query)
