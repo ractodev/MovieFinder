@@ -12,24 +12,23 @@ const ImdbSource={
         .catch(console.error);
     }
     ,
-    imdbSearchTitle(params) {
-        //function to retrieve basic title data such as title, description, title id and image
+    imdbSearchQuery(params) {
+        //function to search into all items (Movies, Series TVs, TV Episodes, Actors, Companies, Keywords and more)
         let query = params.toString().replace(/ /g, '%20');    //URLSearchParams converts blanks to '+' instead of '%20' required in the IMDB API?
-        return ImdbSource.imdbApiCall("SearchTitle/" + IMDB_API_KEY + "/" + query)
+        return ImdbSource.imdbApiCall("SearchAll/" + IMDB_API_KEY + "/" + query)
             .then(data => data.results);
     }
     ,
-    imdbMoreTitleInfo(id) {
-        console.log("id: ", id);
-        //function to retrieve more in-depth information on a title
-        return ImdbSource.imdbApiCall("Title/" + IMDB_API_KEY + "/" + id + "/FullActor,FullCast,Posters,Images,Trailer,Ratings,")
+    imdbGetActorAppearence(actorId) {
+        console.log("actor: ", actorId);
+        //function to retreive actors appearences (imdb needs actor id for this, e.g nm0000158)
+        return ImdbSource.imdbApiCall("Name/" + IMDB_API_KEY + "/" + actorId)
             .then(data => data.results);
     }
     ,
-    imdbGetActorId(params) {
-        //function to retrieve IMDB actor id to later enable actor-specific searches in the IMDB API such as actor appearences etc...
-        let query = params.toString().replace(/ /g, '%20');    //URLSearchParams converts blanks to '+' instead of '%20' required in the IMDB API?
-        return ImdbSource.imdbApiCall("SearchName/" + IMDB_API_KEY + "/" + query)
+    imdbGetMoreTitleInfo(titleId) {
+        //function to retreive more detailed information on a title (imdb needs title id for this, e.g tt10872600)
+        return ImdbSource.imdbApiCall("Title/" + IMDB_API_KEY + "/" + titleId)
             .then(data => data.results);
     }
 }
