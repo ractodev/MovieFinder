@@ -5,7 +5,7 @@ const SearchPresenter = {
         },
     props: ["model"],
     created() {
-        this.promise = ImdbSource.imdbSearchTitle({});
+        this.promise = ImdbSource.imdbSearchTitle("Spiderman");
     },
     watch:{
         'promise': { immediate:true,
