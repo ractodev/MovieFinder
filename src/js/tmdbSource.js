@@ -15,11 +15,18 @@ const TmdbSource={
     tmdbSearchTitle(params) {
         //function to retrieve basic title data such as title, description, title id and image
         let query = params.toString().replace(/ /g, '%20');    //URLSearchParams converts blanks to '+' instead of '%20' required in the IMDB API?
-        return TmdbSource.tmdbApiCall("search/movie?api_key=" + TMDB_API_KEY + "&query=" + query /*+ "&year=" + year*/)
+        return TmdbSource.tmdbApiCall("search/movie?api_key=" + TMDB_API_KEY + "&query=" + query)
             .then(data => data.results);
     }
     ,
-    tmdbSearchPeople(params) {
+    tmdbSearchTvSeries(params) {
+        //function to retrieve basic title data such as title, description, title id and image
+        let query = params.toString().replace(/ /g, '%20');    //URLSearchParams converts blanks to '+' instead of '%20' required in the IMDB API?
+        return TmdbSource.tmdbApiCall("search/tv?api_key=" + TMDB_API_KEY + "&query=" + query)
+            .then(data => data.results);
+    }
+    ,
+    tmdbSearchActor(params) {
         //function to retrieve actors and information about the actors
         let query = params.toString().replace(/ /g, '%20');
         return TmdbSource.tmdbApiCall("search/person?api_key=" + TMDB_API_KEY + "&query=" + query)

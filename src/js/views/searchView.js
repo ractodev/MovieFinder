@@ -4,7 +4,7 @@ function SearchFormView(props) {
         <div>
             <label>Search movies or series </label>
             <input id="searchBox" onChange={event=>props.onText(event.target.value)}/>
-            <select /*onChange={event=>props.onSearchType(event.target.value)}*/>
+            <select onChange={event=>props.onSearchType(event.target.value)}>
                 <option key="Choose" selected hidden>Choose:</option>
                 {props.options.map(function(opt){return <option key={opt}>{opt}</option>})}
             </select>
