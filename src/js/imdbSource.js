@@ -1,7 +1,7 @@
-const ImdbSource={
+const TmdbSource={
     //function to handle API calls to IMDB API
-    imdbApiCall(params) {
-        return fetch(IMDB_BASE_URL+params, {
+    tmdbApiCall(params) {
+        return fetch(TMDB_BASE_URL+params, {
             "method": "GET",
             "headers": {}
         })
@@ -12,23 +12,30 @@ const ImdbSource={
         .catch(console.error);
     }
     ,
-    imdbSearchQuery(params) {
-        //function to search into all items (Movies, Series TVs, TV Episodes, Actors, Companies, Keywords and more)
+    tmdbSearchTitle(params) {
+        //function to retrieve basic title data such as title, description, title id and image
         let query = params.toString().replace(/ /g, '%20');    //URLSearchParams converts blanks to '+' instead of '%20' required in the IMDB API?
-        return ImdbSource.imdbApiCall("SearchAll/" + IMDB_API_KEY + "/" + query)
+        return TmdbSource.tmdbApiCall("search/movie?api_key=" + TMDB_API_KEY + "&query=" + query /*+ "&year=" + year*/)
             .then(data => data.results);
     }
     ,
-    imdbGetActorAppearence(actorId) {
-        console.log("actor: ", actorId);
-        //function to retreive actors appearences (imdb needs actor id for this, e.g nm0000158)
-        return ImdbSource.imdbApiCall("Name/" + IMDB_API_KEY + "/" + actorId)
+    tmdbSearchPeople(params) {
+        //function to retrieve actors and information about the actors
+        let query = params.toString().replace(/ /g, '%20');
+        return TmdbSource.tmdbApiCall("search/person?api_key=" + TMDB_API_KEY + "&query=" + query)
             .then(data => data.results);
     }
     ,
-    imdbGetMoreTitleInfo(titleId) {
-        //function to retreive more detailed information on a title (imdb needs title id for this, e.g tt10872600)
-        return ImdbSource.imdbApiCall("Title/" + IMDB_API_KEY + "/" + titleId)
+    /*tmdbSearchYear(year) {
+        //function to retrieve movies from specific year
+        return TmdbSource.tmdbApiCall("search/movie?api_key=" + TMDB_API_KEY + "&query=" + query + "&year=" + year)
+            .then(data => data.results);
+    }
+    ,*/
+    tmdbSearchMulti(params) {
+        //function to retrive movies, tv-shows and people
+        let query = params.toString().replace(/ /g, '%20');
+        return TmdbSource.tmdbApiCall("search/multi?api_key=" + TMDB_API_KEY + "&query=" + query)
             .then(data => data.results);
     }
 }

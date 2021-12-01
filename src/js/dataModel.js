@@ -23,7 +23,7 @@ class DataModel{
         this.notifyObservers();
 
         if(this.currentTitle)
-            ImdbSource.imdbSearchQuery(this.currentTitle)
+            TmdbSource.tmdbSearchTitle(this.currentTitle)
                 .then( data => {
                     if(this.currentTitle === id) {
                         this.currentTitleDetails = data;

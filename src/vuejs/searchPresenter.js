@@ -5,7 +5,7 @@ const SearchPresenter = {
         },
     props: ["model"],
     created() {
-        this.promise = ImdbSource.imdbSearchQuery("Spiderman");
+        this.promise = ImdbSource.tmdbSearchTitle("Spiderman");
     },
     watch:{
         'promise': { immediate:true,
@@ -24,7 +24,7 @@ const SearchPresenter = {
             <SearchFormView options={["Movie/Series", "Actor Appearence"]}
                 onText={x=>this.searchQuery = x}
                 //onSearchType={x => this.searchType = x}
-                onSearch={()=>this.promise =ImdbSource.imdbSearchQuery(this.searchQuery)}
+                onSearch={()=>this.promise =TmdbSource.tmdbSearchTitle(this.searchQuery)}
             />
             {promiseNoData(this.promise, this.data, this.error) ||
             <SearchResultsView searchResults={this.data}
