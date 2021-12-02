@@ -5,7 +5,7 @@ const SearchPresenter = {
         },
     props: ["model"],
     created() {
-        this.promise = TmdbSource.tmdbSearchTitle("Spiderman");
+        this.promise = TmdbSource.tmdbSearchMovie("Spiderman");
     },
     watch:{
         'promise': { immediate:true,
@@ -26,7 +26,7 @@ const SearchPresenter = {
                 onSearchType={x => this.searchType = x}
                 onSearch={()=>{
                         if(this.searchType === "Movie"){
-                            this.promise = TmdbSource.tmdbSearchTitle(this.searchQuery)
+                            this.promise = TmdbSource.tmdbSearchMovie(this.searchQuery)
                         }else if(this.searchType === "TV Series"){
                             this.promise = TmdbSource.tmdbSearchTvSeries(this.searchQuery)
                         }else if(this.searchType === "Actor Appearence"){
