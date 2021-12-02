@@ -1,21 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>MovieFinder</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MovieFinder</title>
+
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-auth.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>const React={createElement:Vue.h};</script>
+    <link rel="stylesheet" href="../../../src/style.css">
+
 </head>
 <body>
-<div id="main_container" style="display:none;">
-    <h1>Welcome to MovieFinder</h1>
-    <button onclick="mainApp.logout();">logout</button>
-
-
-</div>
-<script src="firebaseConfig.js"></script>
-<script src="main.js"></script>
+    <h1>Welcome To MovieFinder!</h1>
+    <div id="app"></div>
 </body>
+    <!-- API -->
+    <script src="../apiConfig.js"></script>
+    <script src="../tmdbSource.js"></script>
+    <!-- Model -->
+    <script src="../app.js" type="text/jsx"></script>
+    <script src="../model.js" type="text/jsx"></script>
+    <script src="../dataModel.js" type="text/jsx"></script>
+    <!-- View -->
+    <script src="../views/searchView.js" type="text/jsx"></script>
+    <script src="../views/promiseNoData.js" type="text/jsx"></script>
+    <!-- Presenter -->
+    <script src="../../vuejs/searchPresenter.js" type="text/jsx"></script>
+    <!-- Firebase -->
+    <script src="firebaseConfig.js"></script>
+    <script src="main.js"></script>
+
+    <button onclick="mainApp.logout();">logout</button>
+    <!-- Deploy Components-->
+    <script type="text/jsx">
+        Vue.render(
+            <div>
+                <SearchPresenter/>
+            </div>
+            , document.getElementById("app"));
+    </script>
+
+
 </html>
+
