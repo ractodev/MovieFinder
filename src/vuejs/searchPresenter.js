@@ -21,7 +21,7 @@ const SearchPresenter = {
     },
     render(){
         return <div>
-            <SearchFormView options={["Movie", "TV Series", "Actor Appearence", "Year", "Genre", "Rating"]}
+            <SearchFormView options={["Movie", "TV Series", "Actor Appearence", /*"Year"*/, "Genre", "Rating"]}
                 onText={x=>this.searchQuery = x}
                 onSearchType={x => this.searchType = x}
                 onSearch={()=>{
