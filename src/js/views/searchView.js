@@ -20,7 +20,7 @@ function SearchResultsView(props) {
                 <span class="searchResult" key={title.id}
                     onClick={() => props.titleChosen(title.id)}>
                     <img src={"https://image.tmdb.org/t/p/w500/" + (title.profile_path || title.poster_path)} height={100} width={70} />
-                    <div class="resultTitle">{title.title}</div>
+                    <div class="resultTitle">{title.title || title.name}</div>
                 </span>)}
         </div>
     );
