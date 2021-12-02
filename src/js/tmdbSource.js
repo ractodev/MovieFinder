@@ -29,17 +29,17 @@ const TmdbSource={
         return TmdbSource.tmdbApiCall("search/person?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
             .then(data => data.results);
     }
-<<<<<<< HEAD
     ,
+    tmdbGetTitleDetails(id) {
+        //function to retrieve more data about title
+        return TmdbSource.tmdbApiCall("movie/" + id + "?api_key=" + TMDB_API_KEY);
+    }
     /*,
     tmdbSearchMulti(params) {
         //function to retrive movies, tv-shows and people all in one search
         return TmdbSource.tmdbApiCall("search/multi?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
             .then(data => data.results);
-    }*/
-=======
-    /*,
->>>>>>> 949719a566f9d1bdf07c908fd0639d5fedbe8ac0
+    }
     tmdbSearchMulti(params) {
         //function to retrive movies, tv-shows and people all in one search
         return TmdbSource.tmdbApiCall("search/multi?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
