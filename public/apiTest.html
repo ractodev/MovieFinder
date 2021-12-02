@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>MovieFinder</title>
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script>
-            const React={createElement:Vue.h};
-        </script>
+        <script>const React={createElement:Vue.h};</script>
         <link rel="stylesheet" href="../src/style.css">
-        <title>MovieFinder</title>
     </head>
     <body>
         <h1>Welcome To MovieFinder!</h1>
@@ -34,7 +32,7 @@
             <div>
                 <SearchPresenter/>
             </div>
-            , document.getElementById("app"));
+        , document.getElementById("app"));
     </script>
 
 </html>
