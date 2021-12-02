@@ -1,2 +1,3 @@
 //IMDB API DETAILS
-const IMDB_API_KEY="3e07edfc3bmshfd7058efe72b813p1e91cejsna65ab7d09285";
+const TMDB_BASE_URL="https://api.themoviedb.org/3/";
+const TMDB_API_KEY="c8067814275078e75acc5fb23ea85c4e";

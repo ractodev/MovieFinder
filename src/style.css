@@ -1,3 +1,21 @@
-.page_header {
-    color: red;
+body {
+    background-color: #474747;
+    color: white;
+}
+
+.searchResult {
+    border: solid #1a1a1d;
+    border-radius: 10px;
+    margin: 3px;
+    background: #868686;
+    text-align: center;
+    display: inline-block;
+    height: 150px;
+    width: 100px;
+    vertical-align: top;
+}
+.resultTitle {
+    height: 2.5em;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
