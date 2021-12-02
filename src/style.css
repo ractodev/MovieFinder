@@ -26,6 +26,13 @@ body {
     margin: 3px;
     background: #5e5e5e;
     text-align: center;
-    display: inline-block;
     max-width: 500px;
 }
+.overview {
+    width: 80%;
+    display: inline-block;
+}
+.rating {
+    margin: 5px;
+}
+
