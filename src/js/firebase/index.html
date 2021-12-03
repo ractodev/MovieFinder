@@ -32,16 +32,29 @@
     <script src="../../vuejs/searchPresenter.js" type="text/jsx"></script>
     <!-- Firebase -->
     <script src="firebaseConfig.js"></script>
+    <script src="firebaseModel.js"></script>
     <script src="main.js"></script>
 
     <button onclick="mainApp.logout();">logout</button>
     <!-- Deploy Components-->
     <script type="text/jsx">
+
+
+        const myModel=new DataModel();
+        const TopLevelModel= {
+            data(){ return  {model: myModel} },
+            created(){ /*LoadSaveModel(this.model);*/ },
+            render(){  return <App model={this.model} /> }
+        };Vue.render(<TopLevelModel/>,document.getElementById("app"))
+
+        //firebase.database().ref("DataModel").once("value").then( ()=> Vue.render(<TopLevelModel/>,document.getElementById("app")))
+
+        /*
         Vue.render(
             <div>
                 <SearchPresenter/>
             </div>
-            , document.getElementById("app"));
+            , document.getElementById("app"));*/
     </script>
 
 

@@ -17,7 +17,6 @@ class DataModel{
         else {
             this.currentTitle = id;
         }
-
         this.currentTitleDetails= null;
         this.currentTitleError= null;
         this.notifyObservers();
@@ -33,7 +32,7 @@ class DataModel{
                     if( this.currentTitle === id) {
                         this.currentTitleError = err;
                         this.notifyObservers();}
-                    })          
+                    })
     }
 
     addToWatchlist(title) {if(!this.watchlist.includes(title)) {
@@ -47,4 +46,6 @@ class DataModel{
     addObserver(callback) { this.observers = [...this.observers, callback]}
     removeObserver(callback){this.observers = this.observers.filter(x => x !== callback) }
     notifyObservers() { try {this.observers.forEach( cb => cb()) } catch (e) {console.log(e)} }
+
+
 }
