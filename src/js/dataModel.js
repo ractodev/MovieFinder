@@ -1,5 +1,5 @@
 class DataModel {
-    constructor(titles = [], watchlist = [], currentTitle = 1930, observers = []) {
+    constructor(titles = [], watchlist = [], currentTitle = null, observers = []) {
         this.titles = titles;
         this.watchlist = watchlist;
         this.setCurrentTitle(currentTitle);
@@ -18,10 +18,11 @@ class DataModel {
         this.currentTitle = id;
         this.currentTitleDetails = null;
         this.currentTitleError = null;
+        console.log("id: ", id);
         this.notifyObservers();
 
-        if (this.currentTitle) 
-            TmdbSource.tmdbGetTitleDetails(this.currentTitle)
+        if (this.currentTitle) {
+            TmdbSource.tmdbGetMovieDetails(this.currentTitle)
                 .then(data => {
                     if (this.currentTitle === id) {
                         this.currentTitleDetails = data;
@@ -34,6 +35,7 @@ class DataModel {
                         this.notifyObservers();
                     }
                 })
+        }
     }
 
     addToWatchlist(title) {

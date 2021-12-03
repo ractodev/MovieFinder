@@ -12,14 +12,20 @@ const TmdbSource={
         .catch(console.error);
     }
     ,
+    tmdbGetPopular() {
+        //function to retrieve trending titles (updates daily)
+        return TmdbSource.tmdbApiCall("movie/popular?&api_key=" + TMDB_API_KEY + "&page=1")
+            .then(data => data.results);
+    }
+    ,
     tmdbSearchMovie(params) {
-        //function to retrieve movie data
+        //function to retrieve basic movie data
         return TmdbSource.tmdbApiCall("search/movie?&api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
             .then(data => data.results);
     }
     ,
-    tmdbSearchTvSeries(params) {
-        //function to retrieve tv series data
+    tmdbSearchSeries(params) {
+        //function to retrieve basic series data
         return TmdbSource.tmdbApiCall("search/tv?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
             .then(data => data.results);
     }
@@ -30,9 +36,18 @@ const TmdbSource={
             .then(data => data.results);
     }
     ,
-    tmdbGetTitleDetails(id) {
+    tmdbGetMovieDetails(id) {
         //function to retrieve more data about title
         return TmdbSource.tmdbApiCall("movie/" + id + "?api_key=" + TMDB_API_KEY);
+    }
+    ,
+    tmdbGetSeriesDetails(id) {
+        //function to retrieve more data about series
+        return TmdbSource.tmdbApiCall("tv/" + id + "?api_key=" + TMDB_API_KEY);
+    }
+    ,
+    tmdbGetActorAppearence(id) {
+        return TmdbSource.tmdbApiCall("person/" + id + "/combined_credits?api_key=" + TMDB_API_KEY);
     }
     /*,
     tmdbSearchMulti(params) {

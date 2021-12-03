@@ -1,11 +1,11 @@
 const SearchPresenter = {
     data(){
         return {promise: null, data: null,
-            error: null, searchQuery: ""/*, searchType: "" */};
+            error: null, searchQuery: "", searchType: ""};
         },
     props: ["model"],
     created() {
-        this.promise = TmdbSource.tmdbSearchMovie("Spiderman");
+        this.promise = TmdbSource.tmdbGetPopular();
     },
     watch:{
         'promise': { immediate:true,
@@ -28,16 +28,16 @@ const SearchPresenter = {
                         if(this.searchType === "Movie"){
                             this.promise = TmdbSource.tmdbSearchMovie(this.searchQuery)
                         }else if(this.searchType === "TV Series"){
-                            this.promise = TmdbSource.tmdbSearchTvSeries(this.searchQuery)
+                            this.promise = TmdbSource.tmdbSearchSeries(this.searchQuery)
                         }else if(this.searchType === "Actor Appearence"){
                             this.promise = TmdbSource.tmdbSearchActor(this.searchQuery)
-                        }else if(this.searchType === "Year"){
+                        }/*else if(this.searchType === "Year"){
                             //TODO
                         }else if(this.searchType === "Genre"){
                             //TODO
                         }else{
 
-                        }
+                        }*/
                     }
                 }
             /> 
