@@ -10,7 +10,9 @@ var config = {
     messagingSenderId: "514058792409",
     appId: "1:514058792409:web:147b8e83c73bc68fe83dc8"
 };
+
 if(!hasInit){
     firebase.initializeApp(config);
     hasInit = true;
+
 }

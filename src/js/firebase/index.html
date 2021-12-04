@@ -8,6 +8,9 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>const React={createElement:Vue.h};</script>
@@ -33,28 +36,25 @@
     <!-- Firebase -->
     <script src="firebaseConfig.js"></script>
     <script src="firebaseModel.js"></script>
-    <script src="main.js"></script>
+    <script src="login.js"></script>
+
+
 
     <button onclick="mainApp.logout();">logout</button>
     <!-- Deploy Components-->
     <script type="text/jsx">
 
-
+        let uid;
         const myModel=new DataModel();
         const TopLevelModel= {
             data(){ return  {model: myModel} },
-            created(){ /*LoadSaveModel(this.model);*/ },
+            created(){ LoadSaveModel(this.model); uid = loadUID() },
             render(){  return <App model={this.model} /> }
-        };Vue.render(<TopLevelModel/>,document.getElementById("app"))
+        };
+        var newLoad = firebase.initializeApp(config, "newLoad"); // Reloading app
+        newLoad.database().ref("users/" + uid).once("value").then( ()=> Vue.render(<TopLevelModel/>,document.getElementById("app")))
 
-        //firebase.database().ref("DataModel").once("value").then( ()=> Vue.render(<TopLevelModel/>,document.getElementById("app")))
 
-        /*
-        Vue.render(
-            <div>
-                <SearchPresenter/>
-            </div>
-            , document.getElementById("app"));*/
     </script>
 
 
