@@ -27,11 +27,3 @@ function LoadSaveModel(model){
 
     });
 }
-// Help function to store our uid for index.html
-function loadUID(){
-    var uid = localStorage.getItem('_uid');
-    if (!uid) return "Usererror";
-    uid = atob(uid);
-    uid = JSON.parse(uid);
-    return uid
-}

@@ -26,7 +26,6 @@
     <script src="../tmdbSource.js"></script>
     <!-- Model -->
     <script src="../app.js" type="text/jsx"></script>
-    <script src="../model.js" type="text/jsx"></script>
     <script src="../dataModel.js" type="text/jsx"></script>
     <!-- View -->
     <script src="../views/searchView.js" type="text/jsx"></script>
@@ -44,13 +43,22 @@
     <!-- Deploy Components-->
     <script type="text/jsx">
 
-        let uid;
+        // Help function to store our uid for index.html, must be in same page
+        function loadUID(){
+            var uid = localStorage.getItem('_uid');
+            if (!uid) return "Usererror";
+            uid = atob(uid);
+            uid = JSON.parse(uid);
+            return uid
+        }
+
         const myModel=new DataModel();
         const TopLevelModel= {
             data(){ return  {model: myModel} },
-            created(){ LoadSaveModel(this.model); uid = loadUID() },
+            created(){ LoadSaveModel(this.model) },
             render(){  return <App model={this.model} /> }
         };
+        const uid = loadUID()
         var newLoad = firebase.initializeApp(config, "newLoad"); // Reloading app under new name
         newLoad.database().ref("users/" + uid).once("value").then( ()=> Vue.render(<TopLevelModel/>,document.getElementById("app")))
 
