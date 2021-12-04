@@ -1,8 +1,9 @@
 class DataModel {
-    constructor(titles = [], watchlist = [], currentTitle = null, observers = []) {
+    constructor(titles = [], watchlist = [], currentTitle = null/*, searchType = null*/, observers = []) {
         this.titles = titles;
         this.watchlist = watchlist;
         this.setCurrentTitle(currentTitle);
+        //this.setSearchType(searchType);
         this.observers = observers;
     }
 
@@ -11,18 +12,31 @@ class DataModel {
         this.notifyObservers();
     }
 
-    setCurrentTitle(id) {
+    setCurrentTitle(id, type) {
         if (this.currentTitle === id) {
             return;
         }
         this.currentTitle = id;
         this.currentTitleDetails = null;
         this.currentTitleError = null;
-        console.log("id: ", id);
         this.notifyObservers();
 
-        if (this.currentTitle) {
+        if (this.currentTitle && (type === "Movie")) {
             TmdbSource.tmdbGetMovieDetails(this.currentTitle)
+                .then(data => {
+                    if (this.currentTitle === id) {
+                        this.currentTitleDetails = data;
+                        this.notifyObservers();
+                    }
+                })
+                .catch(err => {
+                    if (this.currentTitle === id) {
+                        this.currentTitleError = err;
+                        this.notifyObservers();
+                    }
+                })
+        } else if (this.currentTitle && (type === "TV Series")) {
+            TmdbSource.tmdbGetSeriesDetails(this.currentTitle)
                 .then(data => {
                     if (this.currentTitle === id) {
                         this.currentTitleDetails = data;
@@ -53,3 +67,14 @@ class DataModel {
     removeObserver(callback) { this.observers = this.observers.filter(x => x !== callback) }
     notifyObservers() { try { this.observers.forEach(cb => cb()) } catch (e) { console.log(e) } }
 }
+
+/*
+    setSearchType(type) {
+        if (!type) {
+            //standard should be what is first recommended to the user on the landing page
+            type = "Movie";
+        }
+        this.searchType = type;
+        this.notifyObservers();
+    }
+*/

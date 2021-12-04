@@ -36,6 +36,11 @@ const TmdbSource={
             .then(data => data.results);
     }
     ,
+    tmdbSearchAll(params) {
+        return TmdbSource.tmdbApiCall("search/multi?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params) + "&page=1&include_adult=false")
+            .then(data => data.results);
+    }
+    ,
     tmdbGetMovieDetails(id) {
         //function to retrieve more data about title
         return TmdbSource.tmdbApiCall("movie/" + id + "?api_key=" + TMDB_API_KEY);
@@ -47,17 +52,7 @@ const TmdbSource={
     }
     ,
     tmdbGetActorAppearence(id) {
-        return TmdbSource.tmdbApiCall("person/" + id + "/combined_credits?api_key=" + TMDB_API_KEY);
+        return TmdbSource.tmdbApiCall("person/" + id + "/combined_credits?api_key=" + TMDB_API_KEY)
+            .then(data => data.cast);
     }
-    /*,
-    tmdbSearchMulti(params) {
-        //function to retrive movies, tv-shows and people all in one search
-        return TmdbSource.tmdbApiCall("search/multi?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
-            .then(data => data.results);
-    }
-    tmdbSearchMulti(params) {
-        //function to retrive movies, tv-shows and people all in one search
-        return TmdbSource.tmdbApiCall("search/multi?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
-            .then(data => data.results);
-    }*/
 }

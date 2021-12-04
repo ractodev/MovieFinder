@@ -16,11 +16,22 @@ function SearchFormView(props) {
 function SearchResultsView(props) {
     return (
         <div>
-            {props.searchResults.filter(title => (title.poster_path !== null)).sort(comparePopularity).map(title =>
-                <span class="searchResult" key={title.id}
-                    onClick={() => props.titleChosen(title.id)}>
-                    <img src={"https://image.tmdb.org/t/p/w500/" + (title.profile_path || title.poster_path)} height={100} width={70} />
-                    <div class="resultTitle">{title.title || title.name}</div>
+            {props.searchResults.filter(result => (result.poster_path !== null) && (result.profile_path !== null)).sort(comparePopularity).map(card =>
+                <span class="searchResult" key={card.id}
+                    onClick={() => {
+                        if(card.first_air_date){
+                            //series was selected
+                            props.seriesChosen(card.id);
+                        } else if(card.known_for){
+                            //actor was selected
+                            props.actorChosen(card.id);
+                        } else {
+                            //movie was selected
+                            props.movieChosen(card.id);
+                        }
+                    }}>
+                    <img src={"https://image.tmdb.org/t/p/w500/" + (card.profile_path || card.poster_path)} height={100} width={70} />
+                    <div class="resultTitle">{card.title || card.name}</div>
                 </span>)}
         </div>
     );

@@ -5,11 +5,11 @@ function App(props){
                <div class="watchlistResult" id = "watchlistResult">
                     <WatchlistPresenter model={props.model}/>
                </div>
-               <div class="searchResults">
-                    <SearchPresenter model={props.model}/>
-                    </div>
                <div class="detailedResults">
                     <DetailsPresenter model={props.model}/>
+               </div>
+               <div class="searchResults">
+                    <SearchPresenter model={props.model}/>
                </div>
                <RenderTest />
 
