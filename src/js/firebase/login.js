@@ -18,7 +18,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 ui.start('#firebaseui-auth-container', uiConfig);
 
 
-// observer for when auth changes and update and save uid
+// observer for when auth changes and update and save uid locally in browser
 firebase.auth().onAuthStateChanged((user) => {
     let cached_uid;
     if (user) {

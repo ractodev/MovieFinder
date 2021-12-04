@@ -51,7 +51,7 @@
             created(){ LoadSaveModel(this.model); uid = loadUID() },
             render(){  return <App model={this.model} /> }
         };
-        var newLoad = firebase.initializeApp(config, "newLoad"); // Reloading app
+        var newLoad = firebase.initializeApp(config, "newLoad"); // Reloading app under new name
         newLoad.database().ref("users/" + uid).once("value").then( ()=> Vue.render(<TopLevelModel/>,document.getElementById("app")))
 
 
