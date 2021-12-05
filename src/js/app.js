@@ -28,11 +28,13 @@ function App(props){
             <div class="watchlistResult" id = "historyResult">
                 <Show hash="#historylist"><HistoryPresenter model={props.model}/></Show>
             </div>
+            <div class="leftMargin">
             <div class="detailedResults">
                 <Show hash="#details"><DetailsPresenter model={props.model}/></Show>
             </div>
             <div class="searchResults">
                 <Show hash="#search"><SearchPresenter model={props.model}/></Show>
+            </div>
             </div>
             <RenderTest/>
         </div>
