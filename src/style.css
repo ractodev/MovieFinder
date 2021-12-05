@@ -3,6 +3,10 @@ body {
     color: white;
 }
 
+.flexParent {
+    margin-left: 50px;
+}
+
 .searchResult {
     border: solid #1a1a1d;
     border-radius: 10px;
@@ -18,4 +22,53 @@ body {
     height: 2.5em;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.detailedResults {
+    border: solid black;
+    border-radius: 10px;
+    margin: 3px;
+    background: #5e5e5e;
+    text-align: center;
+    max-width: 500px;
+}
+
+.watchlistResult {
+    width: 300px;
+    height: 100%;
+    border: solid black;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.801);
+    top: 0px;
+    left: -300px;
+}
+
+.openButton{
+    background-color: red;
+    height: 100px;
+    width: 40px;
+    position: absolute;
+    left: 303px;
+    top: calc(50% - 50px);
+}
+.openButton span {
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    left: -30%;
+    bottom: 40%;
+    -webkit-transform: rotate(-90deg);
+}
+
+.editButton{
+    margin-right: 50px;
+}
+.overview {
+    width: 80%;
+    display: inline-block;
+}
+.rating {
+    margin: 5px;
 }

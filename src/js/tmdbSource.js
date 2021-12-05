@@ -12,37 +12,48 @@ const TmdbSource={
         .catch(console.error);
     }
     ,
-    tmdbSearchTitle(params) {
-        //function to retrieve basic title data such as title, description, title id and image
-        let query = params.toString().replace(/ /g, '%20');    //URLSearchParams converts blanks to '+' instead of '%20' required in the IMDB API?
-        return TmdbSource.tmdbApiCall("search/movie?api_key=" + TMDB_API_KEY + "&query=" + query)
+    tmdbGetPopular() {
+        //function to retrieve trending titles (updates daily)
+        return TmdbSource.tmdbApiCall("movie/popular?&api_key=" + TMDB_API_KEY + "&page=1")
             .then(data => data.results);
     }
     ,
-    tmdbSearchTvSeries(params) {
-        //function to retrieve basic title data such as title, description, title id and image
-        let query = params.toString().replace(/ /g, '%20');    //URLSearchParams converts blanks to '+' instead of '%20' required in the IMDB API?
-        return TmdbSource.tmdbApiCall("search/tv?api_key=" + TMDB_API_KEY + "&query=" + query)
+    tmdbSearchMovie(params) {
+        //function to retrieve basic movie data
+        return TmdbSource.tmdbApiCall("search/movie?&api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
+            .then(data => data.results);
+    }
+    ,
+    tmdbSearchSeries(params) {
+        //function to retrieve basic series data
+        return TmdbSource.tmdbApiCall("search/tv?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
             .then(data => data.results);
     }
     ,
     tmdbSearchActor(params) {
-        //function to retrieve actors and information about the actors
-        let query = params.toString().replace(/ /g, '%20');
-        return TmdbSource.tmdbApiCall("search/person?api_key=" + TMDB_API_KEY + "&query=" + query)
+        //function to retrieve actors
+        return TmdbSource.tmdbApiCall("search/person?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
             .then(data => data.results);
     }
     ,
-    /*tmdbSearchYear(year) {
-        //function to retrieve movies from specific year
-        return TmdbSource.tmdbApiCall("search/movie?api_key=" + TMDB_API_KEY + "&query=" + query + "&year=" + year)
+    tmdbSearchAll(params) {
+        return TmdbSource.tmdbApiCall("search/multi?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params) + "&page=1&include_adult=false")
             .then(data => data.results);
     }
-    ,*/
-    tmdbSearchMulti(params) {
-        //function to retrive movies, tv-shows and people
-        let query = params.toString().replace(/ /g, '%20');
-        return TmdbSource.tmdbApiCall("search/multi?api_key=" + TMDB_API_KEY + "&query=" + query)
-            .then(data => data.results);
+    ,
+    tmdbGetMovieDetails(id) {
+        //function to retrieve more data about title
+        return TmdbSource.tmdbApiCall("movie/" + id + "?api_key=" + TMDB_API_KEY);
     }
+    ,
+    tmdbGetSeriesDetails(id) {
+        //function to retrieve more data about series
+        return TmdbSource.tmdbApiCall("tv/" + id + "?api_key=" + TMDB_API_KEY);
+    }
+    ,
+    tmdbGetActorAppearence(id) {
+        return TmdbSource.tmdbApiCall("person/" + id + "/combined_credits?api_key=" + TMDB_API_KEY)
+            .then(data => data.cast);
+    }
+    
 }

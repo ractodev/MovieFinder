@@ -1,9 +1,18 @@
 function RenderTest(){ console.log("Vue sub-component render test"); return false; }
 function App(props){     
      return  ( 
-          <div class="titleResults">
-               <SearchPresenter model={props.model}/>
+          <div class="flexParent">
+               <div class="watchlistResult" id = "watchlistResult">
+                    <WatchlistPresenter model={props.model}/>
+               </div>
+               <div class="detailedResults">
+                    <DetailsPresenter model={props.model}/>
+               </div>
+               <div class="titleResults">
+                    <SearchPresenter model={props.model}/>
+               </div>
                <RenderTest />
+
           </div>  
      );
 }
