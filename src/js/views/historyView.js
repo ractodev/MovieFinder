@@ -32,6 +32,7 @@ function HistoryView(props) {
                 </tr>)}
                 </tbody>
             </table>
+            <button className="logButton" onClick={() => mainApp.logout() }>logout</button>
         </div>
     );
 }

@@ -28,6 +28,7 @@ function WatchlistView(props) {
                         </tr>)}
                 </tbody>
             </table>
+            <button class="logButton" onClick={ () => mainApp.logout() }>logout</button>
         </div>
 
     );
