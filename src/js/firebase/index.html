@@ -5,12 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>const React={createElement:Vue.h};</script>
@@ -30,37 +28,51 @@
     <!-- View -->
     <script src="../views/searchView.js" type="text/jsx"></script>
     <script src="../views/promiseNoData.js" type="text/jsx"></script>
+    <script src="../views/detailsView.js" type="text/jsx"></script>
+    <script src="../views/watchlistView.js" type="text/jsx"></script>
+    <script src="../views/historyView.js" type="text/jsx"></script>
+
     <!-- Presenter -->
     <script src="../../vuejs/searchPresenter.js" type="text/jsx"></script>
+    <script src="../../vuejs/detailsPresenter.js" type="text/jsx"></script>
+    <script src="../../vuejs/watchlistPresenter.js" type="text/jsx"></script>
+    <script src="../../vuejs/historyPresenter.js" type="text/jsx"></script>
+    <script src="../../vuejs/showPresenter.js" type="text/jsx"></script>
     <!-- Firebase -->
     <script src="firebaseConfig.js"></script>
     <script src="firebaseModel.js"></script>
-    <script src="login.js"></script>
-
 
 
     <button onclick="mainApp.logout();">logout</button>
     <!-- Deploy Components-->
     <script type="text/jsx">
 
-        // Help function to store our uid for index.html, must be in same page
-        function loadUID(){
-            var uid = localStorage.getItem('_uid');
-            if (!uid) return "Usererror";
-            uid = atob(uid);
-            uid = JSON.parse(uid);
-            return uid
-        }
 
-        const myModel=new DataModel();
-        const TopLevelModel= {
-            data(){ return  {model: myModel} },
-            created(){ LoadSaveModel(this.model) },
-            render(){  return <App model={this.model} /> }
-        };
-        const uid = loadUID()
-        var newLoad = firebase.initializeApp(config, "newLoad"); // Reloading app under new name
-        newLoad.database().ref("users/" + uid).once("value").then( ()=> Vue.render(<TopLevelModel/>,document.getElementById("app")))
+        // Reauth firebase as new page is loaded to get currentuser and then render vue
+        let uid;
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+
+                uid = user.uid;
+                console.log(uid)
+
+                const myModel=new DataModel();
+                const TopLevelModel= {
+                    data(){ return  {model: myModel} },
+                    created(){ LoadSaveModel(this.model) },
+                    render(){  return <App model={this.model} /> }
+                };
+                firebase.database().ref("users/" + uid).once("value").then( ()=> Vue.render(<TopLevelModel/>,document.getElementById("app")))
+                // ...
+            } else {
+                // User is signed out
+                // ...
+            }
+        });
+
+
 
 
     </script>

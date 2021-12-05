@@ -1,4 +1,4 @@
-
+// Load from firebase database
 function LoadSaveModel(model){
 
 

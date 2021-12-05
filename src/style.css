@@ -51,6 +51,13 @@ body {
 .editButton{
     margin-right: 50px;
 }
+.historyButton{
+    margin-right: 50px;
+    position: absolute;
+    right: -40px;
+    top: 10px;
+
+}
 .overview {
     width: 80%;
     display: inline-block;

@@ -13,7 +13,7 @@ function DetailsView(props){
                 Rating: {(props.title.vote_average || "unrated")}
             </div>
             <div class="buttons">
-                <button>Add to watchlist!</button>
+                <button onClick={ () => {props.addToWatchlist(props.title.title) }}>Add to watchlist!</button>
                 <button>Cancel</button>
             </div>
         </div>

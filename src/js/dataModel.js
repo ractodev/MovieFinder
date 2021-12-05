@@ -1,10 +1,11 @@
 class DataModel {
-    constructor(titles = [], watchlist = [], currentTitle = null/*, searchType = null*/, observers = []) {
+    constructor(titles = [], watchlist = [], currentTitle = null/*, searchType = null*/, observers = [], historylist = []) {
         this.titles = titles;
         this.watchlist = watchlist;
         this.setCurrentTitle(currentTitle);
         //this.setSearchType(searchType);
         this.observers = observers;
+        this.historylist = historylist;
     }
 
     setTitles(watchlist) {
@@ -61,6 +62,17 @@ class DataModel {
 
     removeFromWatchlist(titleData) {
         this.watchlist = this.watchlist.filter(title => title.id !== titleData.id);
+    }
+
+    addToHistorylist(title) {
+        if (!this.historylist.includes(title)) {
+            this.historylist = [...this.historylist, title];
+            this.notifyObservers();
+        }
+    }
+
+    removeFromHistorylist(titleData) {
+        this.historylist = this.historylist.filter(title => title.id !== titleData.id);
     }
 
     addObserver(callback) { this.observers = [...this.observers, callback] }
