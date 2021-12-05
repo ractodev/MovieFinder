@@ -19,3 +19,43 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+.detailedResults {
+    border: solid black;
+    border-radius: 10px;
+    margin: 3px;
+    background: #5e5e5e;
+    text-align: center;
+    max-width: 500px;
+}
+
+.watchlistResult {
+    width: 300px;
+    height: 100%;
+    border: solid black;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.801);
+    top: 0px;
+    left: -300px;
+}
+
+.openButton{
+    background-color: red;
+    height: 100px;
+    width: 40px;
+    position: absolute;
+    left: 303px;
+    top: calc(50% - 50px);
+}
+
+.editButton{
+    margin-right: 50px;
+}
+.overview {
+    width: 80%;
+    display: inline-block;
+}
+.rating {
+    margin: 5px;
+}
+
