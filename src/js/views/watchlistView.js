@@ -2,20 +2,11 @@ function WatchlistView(props) {
     //function to display a sidebar with movies the user has saved
     return (
         <div class="watchlistView">
-            <button className="historyButton" onClick={() => {
-                window.location.hash = "#history"}}>History
-            </button>
-            <button class = "openButton" onClick = {()=>{
-                    if(document.getElementById("watchlistResult").style.left === "0px"){
-                        document.getElementById("watchlistResult").style.left = "-300px"
-                        window.location.hash="#search"
-                    }else{
-                        document.getElementById("watchlistResult").style.left = "0px"
-                        window.location.hash="#watchlist"
-                    }
-
-                }   
-            }>
+            <button class="swapButton" onClick={() => {
+                document.getElementById("watchlistResult").style.left = "-300px"
+                document.getElementById("historyResult").style.left = "0px"
+                currentList = "historyResult"
+                window.location.hash = "#historylist"}}>History
             </button>
             <h3>My Watchlist</h3>
             <span>

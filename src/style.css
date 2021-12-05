@@ -44,14 +44,15 @@ body {
     height: 100px;
     width: 40px;
     position: absolute;
-    left: 303px;
+    left: 0px;
     top: calc(50% - 50px);
 }
+
 
 .editButton{
     margin-right: 50px;
 }
-.historyButton{
+.swapButton{
     margin-right: 50px;
     position: absolute;
     right: -40px;
