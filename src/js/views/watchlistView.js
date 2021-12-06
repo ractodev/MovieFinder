@@ -7,7 +7,6 @@ function WatchlistView(props) {
                 document.getElementById("historyResult").style.left = "0px"
                 currentList = "historyResult"
                 window.location.hash = "#historylist"}}>History
-            <span>Watchlist</span>
             </button>
             <h3>My Watchlist</h3>
             <span>
@@ -29,6 +28,7 @@ function WatchlistView(props) {
                     </tr>)}
                 </tbody>
             </table>
+            <button className="logButton" onClick={() => mainApp.logout() }>logout</button>
         </div>
     );
 }

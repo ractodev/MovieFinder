@@ -54,6 +54,7 @@ class DataModel {
 
     removeFromWatchlist(titleData) {
         this.watchlist = this.watchlist.filter(title => title.id !== titleData.id);
+        this.notifyObservers();
     }
 
     addToWatchlist(title) {
