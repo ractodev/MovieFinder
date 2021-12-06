@@ -1,9 +1,8 @@
 class DataModel {
-    constructor(titles = [], watchlist = [], currentTitle = null/*, searchType = null*/, observers = [], historylist = []) {
+    constructor(titles = [], watchlist = [], currentTitle = null, observers = [], historylist = []) {
         this.titles = titles;
         this.watchlist = watchlist;
         this.setCurrentTitle(currentTitle);
-        //this.setSearchType(searchType);
         this.observers = observers;
         this.historylist = historylist;
     }
@@ -53,20 +52,13 @@ class DataModel {
         }
     }
 
-    addToWatchlist(title) {
-        if (!this.watchlist.includes(title)) {
-            this.watchlist = [...this.watchlist, title];
-            this.notifyObservers();
-        }
-    }
-
     removeFromWatchlist(titleData) {
         this.watchlist = this.watchlist.filter(title => title.id !== titleData.id);
     }
 
-    addToHistorylist(title) {
-        if (!this.historylist.includes(title)) {
-            this.historylist = [...this.historylist, title];
+    addToWatchlist(title) {
+        if (!this.watchlist.find(elem => elem.id === title.id)) {
+            this.watchlist = [...this.watchlist, title];
             this.notifyObservers();
         }
     }
@@ -80,14 +72,3 @@ class DataModel {
     notifyObservers() { try { this.observers.forEach(cb => cb()) } catch (e) { console.log(e) } }
 
 }
-
-/*
-    setSearchType(type) {
-        if (!type) {
-            //standard should be what is first recommended to the user on the landing page
-            type = "Movie";
-        }
-        this.searchType = type;
-        this.notifyObservers();
-    }
-*/

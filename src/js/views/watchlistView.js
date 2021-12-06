@@ -7,29 +7,28 @@ function WatchlistView(props) {
                 document.getElementById("historyResult").style.left = "0px"
                 currentList = "historyResult"
                 window.location.hash = "#historylist"}}>History
+            <span>Watchlist</span>
             </button>
             <h3>My Watchlist</h3>
             <span>
-                <button class = "editButton" onClick={console.log("User want to edit watchlist!")}>Edit</button>
+                <button class="editButton" onClick={console.log("User want to edit watchlist!")}>Edit</button>
                 Sort by:
                 <select /*onChange={event=>props.onSearchType(event.target.value)}*/>
-                    <option key = "Choose" selected hidden>List Order</option>
-                    {props.options.map(function(opt){return <option key={opt}>{opt}</option>})}
+                    <option key="Choose" selected hidden>List Order</option>
+                    {props.options.map(function (opt) { return <option key={opt}>{opt}</option> })}
                 </select>
             </span>
             <hr></hr>
             <table>
                 <tbody>
-                        {[...props.watchlist].map(obj => <tr key={obj.title}>
-                        <td> <button onClick={() => props.removeTitle(obj)} className="deleteButton">x</button></td>
-                        <td class = "Title">
-                            {obj.title}
+                    {[...props.watchlist].map(title => <tr key={title.title}>
+                        <td> <button class="deleteButton" onClick={()=>props.removeTitle(title)}>x</button></td>
+                        <td class="Title">
+                            {title.title || title.name}
                         </td>
-                        </tr>)}
+                    </tr>)}
                 </tbody>
             </table>
-            <button class="logButton" onClick={ () => mainApp.logout() }>logout</button>
         </div>
-
     );
 }
