@@ -5,6 +5,9 @@ own personal watchlist that they can turn to when they have trouble
 finding a good movie to watch. The application can also give recommendations
 of which website/movie theater to visit in order to watch a desired movie.
 
+**Link to app:**
+[https://moviefinder-kth.web.app/]
+
 **What we have implemented so far:**
 
 - A login procedure to our website using "sign in with google".
