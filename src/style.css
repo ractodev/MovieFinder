@@ -78,3 +78,22 @@ body {
     bottom: 10px;
 }
 
+.title {
+    background-color: azure;
+    font-size: 20px;
+}
+
+.loginHeader {
+    position: fixed;
+    left: 42%;
+    text-align: center;
+    background-color:goldenrod;
+    color: black;
+    font-size: 64px;
+}
+
+.loginButtons {
+    position:fixed; top: 15%;
+    left: 45%
+}
+
