@@ -41,9 +41,11 @@ The database is implemented using Firebase.
 
 
 **Project file structure:**
-- **login.html**: handles google auth and redirects to main html file "index.html."
-- **index.html**: handles the main render (using Vue). The dataModel is
-initialized, the firebase load/save and the app.js is called.
+- **Directory public**
+  - Note: to start app launch login.html
+    - login.html: handles google auth and redirects to main html file "index.html."
+    - index.html: handles the main render (using Vue). The dataModel is
+      initialized, the firebase load/save and the app.js is called.
 - **Directory src**
   - Directory js
     - Directory firebase
