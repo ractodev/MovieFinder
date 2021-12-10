@@ -17,6 +17,7 @@ class DataModel {
             return;
         }
         this.currentTitle = id;
+        this.currentTitleType = type;
         this.currentTitleDetails = null;
         this.currentTitleError = null;
         this.notifyObservers();

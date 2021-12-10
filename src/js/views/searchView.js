@@ -23,7 +23,7 @@ function SearchResultsView(props) {
 
 
                 if (document.getElementById(currentList).style.left === "0px") {
-                    document.getElementById(currentList).style.left = "-300px"
+                    document.getElementById(currentList).style.left = "-303px"
                     document.getElementById("openButton").style.left = "0px"
 
                     window.location.hash = "#search"

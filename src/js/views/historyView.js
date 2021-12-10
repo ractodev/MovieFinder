@@ -3,8 +3,14 @@ function HistoryView(props) {
     return (
         <div class="historyView">
             <button class="swapButton" onClick={() => {
+                document.getElementById("watchlistResult").style.transition = "0s"
+                document.getElementById("historyResult").style.transition = "0s"
                 document.getElementById("watchlistResult").style.left = "0px"
-                document.getElementById("historyResult").style.left = "-300px"
+                document.getElementById("historyResult").style.left = "-303px"
+                setTimeout(()=>{
+                    document.getElementById("watchlistResult").style.transition = "0.5s"
+                    document.getElementById("historyResult").style.transition = "0.5s"
+                }, 10)
                 currentList = "watchlistResult"
                 window.location.hash = "#watchlist"
             }}>Watchlist
@@ -27,10 +33,10 @@ function HistoryView(props) {
                 <tbody>
                 {[...props.historyList].map(obj => <tr key={obj.title}>
                     <td> <button onClick={() => {props.addToWatchlist(obj);
-                        props.removeFromHistory(obj)}} className="deleteButton">Add back</button>
+                        props.removeFromHistory(obj)}} className="addBackButton">Add back</button>
                     </td>
                     <td class = "Title">
-                        {obj.title}
+                        {obj.title || obj.name}
                     </td>
                 </tr>)}
                 </tbody>

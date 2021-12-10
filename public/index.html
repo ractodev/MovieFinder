@@ -64,7 +64,7 @@
                     created(){ LoadSaveModel(this.model) },
                     render(){  return <App model={this.model} /> }
                 };
-                firebase.database().ref("users/" + uid).once("value").then( ()=> Vue.render(<TopLevelModel/>,document.getElementById("app")))
+                Vue.render(<TopLevelModel/>,document.getElementById("app"))
                 // ...
             } else {
                 // User is signed out
