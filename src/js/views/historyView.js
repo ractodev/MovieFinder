@@ -9,10 +9,8 @@ function HistoryView(props) {
                 window.location.hash = "#watchlist"
             }}>Watchlist
             </button>
-
             <h3>My History</h3>
             <span>
-                <button class="editButton" onClick={console.log("User want to edit historylist!")}>Edit</button>
                 Sort by:
                 <select /*onChange={event=>props.onSearchType(event.target.value)}*/>
                     <option key="Choose" selected hidden>Last seen</option>
@@ -20,12 +18,17 @@ function HistoryView(props) {
                         return <option key={opt}>{opt}</option>
                     })}
                 </select>
+                 <button className="editButton" onClick={() => props.clearHistory()}>
+                     Clear history
+                 </button>
             </span>
             <hr></hr>
             <table>
                 <tbody>
-                {[...props.getHistory].map(obj => <tr key={obj.title}>
-                    <td> <button onClick={() => props.removeTitle(obj)} className="deleteButton">x</button></td>
+                {[...props.historyList].map(obj => <tr key={obj.title}>
+                    <td> <button onClick={() => {props.addToWatchlist(obj);
+                        props.removeFromHistory(obj)}} className="deleteButton">Add back</button>
+                    </td>
                     <td class = "Title">
                         {obj.title}
                     </td>

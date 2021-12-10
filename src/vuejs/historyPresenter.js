@@ -1,5 +1,8 @@
 function HistoryPresenter(props){
-    return <HistoryView getHistory = {props.model.historylist}
+    return <HistoryView historyList = {props.model.historylist}
                         options={["Last seen", "First seen"]}
+                        clearHistory={() => props.model.clearHistorylist()}
+                        addToWatchlist={title=>props.model.addToWatchlist(title)}
+                        removeFromHistory = { title=>props.model.removeFromHistorylist(title) }
     />
 }

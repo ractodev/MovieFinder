@@ -64,9 +64,24 @@ class DataModel {
         }
     }
 
+
     removeFromHistorylist(titleData) {
         this.historylist = this.historylist.filter(title => title.id !== titleData.id);
+        this.notifyObservers();
     }
+
+    addToHistorylist(title) {
+        if (!this.historylist.find(elem => elem.id === title.id)) {
+            this.historylist = [...this.historylist, title];
+            this.notifyObservers();
+        }
+    }
+
+    clearHistorylist(){
+        this.historylist = []
+        this.notifyObservers()
+    }
+
 
     addObserver(callback) { this.observers = [...this.observers, callback] }
     removeObserver(callback) { this.observers = this.observers.filter(x => x !== callback) }
