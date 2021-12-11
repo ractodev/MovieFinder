@@ -42,13 +42,17 @@ body {
 }
 
 .openButton{
-    background-color: red;
-    height: 100px;
-    width: 40px;
+    background-color: rgb(2, 86, 134);
+    height: 40px;
+    width: 100px;
     position: fixed;
     left: 0px;
+    margin-left: -30px;
     top: calc(50% - 50px);
     transition: 0.5s;
+    transform: rotate(90deg);
+    border-radius: 10px  10px  0px  0px;
+    color: white;
 }
 
 .watchlistTable{
@@ -66,10 +70,12 @@ body {
 }
 
 .deleteButton{
-   border-radius: 10px;
    position: absolute;
     margin-left: 25px;
     margin-top: -25px;
+    background-color: transparent;
+    color: white;
+    border: none;
 }
 
 .deleteButtonRow{
@@ -78,6 +84,12 @@ body {
 
 .addToHistory{
     border-radius:10px;
+    background-color: transparent;
+    color: white;
+    font-size: 10px;
+    width: 45px;
+    height: 25px;
+    border: rgb(109, 109, 109) 1px solid;
 }
 
 .addToHistoryRow{
