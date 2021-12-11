@@ -12,8 +12,7 @@ function HistoryView(props) {
                     document.getElementById("historyResult").style.transition = "0.5s"
                 }, 10)
                 currentList = "watchlistResult"
-                window.location.hash = "#watchlist"
-            }}>Watchlist
+                window.location.hash = "#watchlist"}}>Watchlist
             </button>
             <h3>My History</h3>
             <span>
@@ -21,27 +20,27 @@ function HistoryView(props) {
                 <select /*onChange={event=>props.onSearchType(event.target.value)}*/>
                     <option key="Choose" selected hidden>Last seen</option>
                     {props.options.map(function (opt) {
-                        return <option key={opt}>{opt}</option>
-                    })}
+                        return <option key={opt}>{opt}</option>})}
                 </select>
-                 <button className="editButton" onClick={() => props.clearHistory()}>
+                 <button className="clearButton" onClick={() => props.clearHistory()}>
                      Clear history
                  </button>
             </span>
             <hr></hr>
-            <table>
+            <table class = "watchlistTable">
                 <tbody>
-                {[...props.historyList].map(obj => <tr key={obj.title}>
-                    <td> <button onClick={() => {props.addToWatchlist(obj);
-                        props.removeFromHistory(obj)}} className="addBackButton">Add back</button>
-                    </td>
-                    <td class = "Title">
+                {[...props.historyList].map(obj => <tr class="watchlistTr" key={obj.title}>
+                    <td><img src={"https://image.tmdb.org/t/p/w500/" + obj.poster_path} height={50} /></td>
+                    <td class = "watchlistTitle">
                         {obj.title || obj.name}
+                    </td>
+                    <td class = "deleteButtonRow">
+                        <button onClick={() => {props.addToWatchlist(obj);
+                        props.removeFromHistory(obj)}} className="deleteButtonRow">Add back</button>
                     </td>
                 </tr>)}
                 </tbody>
             </table>
-            <button className="logButton" onClick={() => mainApp.logout() }>logout</button>
         </div>
     );
 }

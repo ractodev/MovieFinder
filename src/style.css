@@ -86,8 +86,11 @@ body {
     margin-top: 30px;
 }
 
-.editButton{
+.clearButton{
     margin-right: 50px;
+    position: absolute;
+    right: -40px;
+    top: 56px;
 }
 .swapButton{
     margin-right: 50px;
@@ -109,10 +112,10 @@ body {
 }
 
 .logButton {
-    margin-right: 50px;
-    position: absolute;
-    right: -40px;
-    bottom: 10px;
+    background-color: white;
+    color: black;
+    font-size: large;
+    margin-left: 10px;
 }
 
 .title {

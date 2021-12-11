@@ -30,12 +30,14 @@ function WatchlistView(props) {
                         <td class="watchlistTitle">
                             {title.title || title.name}
                         </td>
-                        <td class = "deleteButtonRow"> <button class="deleteButton" onClick={()=>props.removeTitle(title)}>x</button></td>
-                        <td class = "addToHistoryRow"> <button class="addToHistory" onClick={()=>{props.addToHistorylist(title); props.removeTitle(title) }}>Seen</button></td>
+                        <td class = "deleteButtonRow">
+                            <button class="deleteButton" onClick={()=>props.removeTitle(title)}>x</button></td>
+                        <td class = "addToHistoryRow">
+                            <button class="addToHistory" onClick={()=>{props.addToHistorylist(title);
+                                props.removeTitle(title) }}>Seen</button></td>
                     </tr>)}
                 </tbody>
             </table>
-            <button className="logButton" onClick={() => mainApp.logout() }>logout</button>
         </div>
     );
 }
