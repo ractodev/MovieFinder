@@ -19,22 +19,6 @@ function SearchFormView(props) {
 function SearchResultsView(props) {
     return (
         <div>
-            <button class= "openButton" id = "openButton" onClick={() => {
-            if (document.getElementById(currentList).style.left === "0px") {
-                document.getElementById(currentList).style.left = "-303px"
-                document.getElementById("openButton").style.left = "0px"
-
-                window.location.hash = "#search"
-            } else {
-                document.getElementById(currentList).style.left = "0px"
-                document.getElementById("openButton").style.left = "303px"
-                window.location.hash = "#watchlist"
-
-            }
-            currentList = "watchlistResult"
-            }
-            }>Watchlist
-            </button>
             {props.searchResults.filter(result => (result.poster_path !== null) && (result.profile_path !== null)).sort(comparePopularity).map(card =>
                 <span class="searchResult" key={card.id}
                     onClick={() => {
