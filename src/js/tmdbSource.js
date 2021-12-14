@@ -56,7 +56,8 @@ const TmdbSource={
         var promise = Promise.allSettled([
             TmdbSource.tmdbApiCall("movie/" + id + "?api_key=" + TMDB_API_KEY),
             TmdbSource.tmdbApiCall("movie/" + id + "/similar?api_key=" + TMDB_API_KEY),
-            TmdbSource.tmdbApiCall("movie/" + id + "/videos?api_key=" + TMDB_API_KEY)
+            TmdbSource.tmdbApiCall("movie/" + id + "/videos?api_key=" + TMDB_API_KEY),
+            TmdbSource.tmdbApiCall("movie/"+ id + "/watch/provider?api_key=" + TMDB_API_KEY)
         ])
         return promise;
     }
@@ -64,7 +65,7 @@ const TmdbSource={
     tmdbGetDetailedSeriesInfo(id) {
         //function to retrieve series data from multiple endpoints
         var promise = Promise.allSettled([
-            Tmdbource.tmdbApiCall("tv/" + id + "?api_key=" + TMDB_API_KEY),
+            TmdbSource.tmdbApiCall("tv/" + id + "?api_key=" + TMDB_API_KEY),
             TmdbSource.tmdbApiCall("tv/" + id + "/similar?api_key=" + TMDB_API_KEY),
             TmdbSource.tmdbApiCall("tv/" + id + "/videos?api_key=" + TMDB_API_KEY),
             TmdbSource.tmdbApiCall("tv/" + id + "/watch/providers?api_key=" + TMDB_API_KEY)

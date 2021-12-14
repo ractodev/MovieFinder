@@ -41,6 +41,7 @@ class DataModel {
             TmdbSource.tmdbGetDetailedSeriesInfo(this.currentTitle)
                 .then(data => {
                     if (this.currentTitle === id) {
+                        console.log("datamodel data: ", data);
                         this.currentTitleDetails = data;
                         this.notifyObservers();
                     }
