@@ -29,12 +29,15 @@ function App(props){
                 <Show hash="#historylist"><HistoryPresenter model={props.model}/></Show>
             </div>
             <div class="leftMargin">
-            <div class="detailedResults">
-                <Show hash="#details"><DetailsPresenter model={props.model}/></Show>
+                <div class="detailedResults">
+                    <Show hash="#details"><DetailsPresenter model={props.model}/></Show>
+                </div>
+                <div class="searchResults">
+                    <Show hash="#search"><SearchPresenter model={props.model}/></Show>
+                </div>
             </div>
-            <div class="searchResults">
-                <Show hash="#search"><SearchPresenter model={props.model}/></Show>
-            </div>
+            <div className="notifyUser" id="notifyUser">
+                <Show hash="#notify"><NotifyPresenter/></Show>
             </div>
             <RenderTest/>
         </div>

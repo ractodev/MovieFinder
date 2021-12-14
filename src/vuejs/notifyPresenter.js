@@ -1,0 +1,3 @@
+function NotifyPresenter(){
+    return <NotifyView/>
+}

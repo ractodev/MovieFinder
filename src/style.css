@@ -173,3 +173,23 @@ body {
     }
 }
 
+.notifyUser{
+    background:lawngreen;
+    padding: 20px 40px;
+    width: 200px;
+    position: absolute;
+    right: -300px;
+    top: 10px;
+    overflow: hidden;
+    border-radius: 4px;
+    border-left: 8px solid green;
+    border-right: 8px solid green;
+    transition: 0.5s;
+}
+
+.msg{
+    padding: 0 10px;
+    font-size: 18px;
+    font-style: italic;
+    color: #1a1a1d;
+}
