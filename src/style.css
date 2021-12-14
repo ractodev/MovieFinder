@@ -177,7 +177,7 @@ body {
     background:lawngreen;
     padding: 20px 40px;
     width: 200px;
-    position: absolute;
+    position: fixed;
     right: -300px;
     top: 10px;
     overflow: hidden;
