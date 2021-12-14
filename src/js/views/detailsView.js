@@ -1,7 +1,7 @@
 function DetailsView(props) {
     return (
         <div>
-            <h2>{props.title.title || props.title.name} ({props.title.release_date || props.title.first_air_date})
+            <h2>{props.title.title || props.title.name} ({shortDateFormat()})
             </h2>
             <div>
                 <img src={"https://image.tmdb.org/t/p/w500/" + props.title.poster_path} height={250} />
@@ -21,8 +21,19 @@ function DetailsView(props) {
                     }, 2000);
                 }}>Add to watchlist!
                 </button>
-                <button>Cancel</button>
+                <button onClick={()=>window.location.hash="#search"}>Cancel</button>
             </div>
         </div>
     );
+
+    function shortDateFormat() {
+        //function to trim release date to year only
+        if(props.title.release_date) {
+            return props.title.release_date.split('-')[0];
+        } else if(props.title.first_air_date) {
+            return props.title.first_air_date.split('-')[0];
+        } else {
+            return "unknown";
+        }
+    }
 }

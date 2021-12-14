@@ -29,6 +29,9 @@ function App(props){
                 <Show hash="#historylist"><HistoryPresenter model={props.model}/></Show>
             </div>
             <div class="leftMargin">
+                <div class="moreInfo">
+                    <Show hash="#info"><InformationPresenter model={props.model}/></Show>
+                </div>
                 <div class="detailedResults">
                     <Show hash="#details"><DetailsPresenter model={props.model}/></Show>
                 </div>
@@ -45,7 +48,7 @@ function App(props){
 }
 
 function defaultRoute(){
-    const check = ["#search", "#details", "#watchlist", "historylist"]
+    const check = ["#search", "#details", "#info","#watchlist", "historylist"]
         .find((knownRoute)=> knownRoute === window.location.hash)
     if(check === undefined ){
         window.location.hash="#search";

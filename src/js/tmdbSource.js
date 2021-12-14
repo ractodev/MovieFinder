@@ -24,10 +24,20 @@ const TmdbSource={
             .then(data => data.results);
     }
     ,
+    tmdbGetMovieDetails(id) {
+        //function to retrieve basic movie data
+        return TmdbSource.tmdbApiCall("movie/" + id + "?api_key=" + TMDB_API_KEY);
+    }
+    ,
     tmdbSearchSeries(params) {
         //function to retrieve basic series data
         return TmdbSource.tmdbApiCall("search/tv?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params))
             .then(data => data.results);
+    }
+    ,
+    tmdbGetSeriesDetails(id) {
+        //function to retrieve basic series data
+        return TmdbSource.tmdbApiCall("tv/" + id + "?api_key=" + TMDB_API_KEY);
     }
     ,
     tmdbSearchActor(params) {
@@ -36,23 +46,29 @@ const TmdbSource={
             .then(data => data.results);
     }
     ,
-    tmdbSearchAll(params) {
-        return TmdbSource.tmdbApiCall("search/multi?api_key=" + TMDB_API_KEY + "&query=" + new URLSearchParams(params) + "&page=1&include_adult=false")
-            .then(data => data.results);
-    }
-    ,
-    tmdbGetMovieDetails(id) {
-        //function to retrieve more data about title
-        return TmdbSource.tmdbApiCall("movie/" + id + "?api_key=" + TMDB_API_KEY);
-    }
-    ,
-    tmdbGetSeriesDetails(id) {
-        //function to retrieve more data about series
-        return TmdbSource.tmdbApiCall("tv/" + id + "?api_key=" + TMDB_API_KEY);
-    }
-    ,
     tmdbGetActorAppearence(id) {
         return TmdbSource.tmdbApiCall("person/" + id + "/combined_credits?api_key=" + TMDB_API_KEY)
             .then(data => data.cast);
+    }
+    ,
+    tmdbGetDetailedMovieInfo(id) {
+        //function to retrieve movie data from multiple endpoints
+        var promise = Promise.allSettled([
+            TmdbSource.tmdbApiCall("movie/" + id + "?api_key=" + TMDB_API_KEY),
+            TmdbSource.tmdbApiCall("movie/" + id + "/similar?api_key=" + TMDB_API_KEY),
+            TmdbSource.tmdbApiCall("movie/" + id + "/videos?api_key=" + TMDB_API_KEY)
+        ])
+        return promise;
+    }
+    ,
+    tmdbGetDetailedSeriesInfo(id) {
+        //function to retrieve series data from multiple endpoints
+        var promise = Promise.allSettled([
+            Tmdbource.tmdbApiCall("tv/" + id + "?api_key=" + TMDB_API_KEY),
+            TmdbSource.tmdbApiCall("tv/" + id + "/similar?api_key=" + TMDB_API_KEY),
+            TmdbSource.tmdbApiCall("tv/" + id + "/videos?api_key=" + TMDB_API_KEY),
+            TmdbSource.tmdbApiCall("tv/" + id + "/watch/providers?api_key=" + TMDB_API_KEY)
+        ])
+        return promise;
     }
 }

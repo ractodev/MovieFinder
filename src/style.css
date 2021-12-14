@@ -29,6 +29,15 @@ body {
     max-width: 500px;
 }
 
+.moreInfo {
+    border: solid black;
+    border-radius: 10px;
+    margin: 3px;
+    background: #5e5e5e;
+    text-align: center;
+    max-width: 500px;
+}
+
 .watchlistResult {
     width: 303px;
     height: 100%;

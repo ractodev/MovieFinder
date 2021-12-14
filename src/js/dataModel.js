@@ -23,9 +23,10 @@ class DataModel {
         this.notifyObservers();
 
         if (this.currentTitle && (type === "Movie")) {
-            TmdbSource.tmdbGetMovieDetails(this.currentTitle)
+            TmdbSource.tmdbGetDetailedMovieInfo(this.currentTitle)
                 .then(data => {
                     if (this.currentTitle === id) {
+                        console.log("datamodel data: ", data);
                         this.currentTitleDetails = data;
                         this.notifyObservers();
                     }
@@ -37,7 +38,7 @@ class DataModel {
                     }
                 })
         } else if (this.currentTitle && (type === "TV Series")) {
-            TmdbSource.tmdbGetSeriesDetails(this.currentTitle)
+            TmdbSource.tmdbGetDetailedSeriesInfo(this.currentTitle)
                 .then(data => {
                     if (this.currentTitle === id) {
                         this.currentTitleDetails = data;
