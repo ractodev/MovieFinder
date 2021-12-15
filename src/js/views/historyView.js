@@ -16,12 +16,6 @@ function HistoryView(props) {
             </button>
             <h3>My History</h3>
             <span>
-                Sort by:
-                <select /*onChange={event=>props.onSearchType(event.target.value)}*/>
-                    <option key="Choose" selected hidden>Last seen</option>
-                    {props.options.map(function (opt) {
-                        return <option key={opt}>{opt}</option>})}
-                </select>
                  <button className="clearButton" onClick={() => props.clearHistory()}>
                      Clear history
                  </button>

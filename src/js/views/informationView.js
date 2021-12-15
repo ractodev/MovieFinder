@@ -1,35 +1,36 @@
 function InformationView(props) {
     return(
-        <div>
-            <h2>{props.title.title || props.title.name} {shortDateFormat()}
-            </h2>
-            <div>
+        <div class="informationView">
+            <h2>{props.title.title || props.title.name} {shortDateFormat()}</h2>
+            <div id="poster">
                 <img src={"https://image.tmdb.org/t/p/w500/" + props.title.poster_path} height={250} />
             </div>
-            <div class="trailer">
-                <iframe width="420" height ="345" src={"https://www.youtube.com/embed/" + checkTrailerAvailability() + "?autoplay=1&mute=1"}>
+            <div id="trailer">
+                <iframe id="embed" src={"https://www.youtube.com/embed/" + checkTrailerAvailability() + "?autoplay=1&mute=1"}>
                 </iframe>
             </div>
-            <div class="overview">
+            <div id="overview">
                 {props.title.overview}
             </div>
-            <div class="rating">
-                Rating: {(props.title.vote_average || "unrated")}
+            <div id="rating">
+                <img src={"/src/js/assets/imdb_logo.png"} id="imdbLogo"/>
+                <span>Rating: {(props.title.vote_average || "unrated")}</span>
             </div>
-            <div class="providers">
-                Where to watch:  
-                {" " + checkProviderAvailability()}
+            <div id="providers">
+                Where to watch: {" " + checkProviderAvailability()}
             </div>
-            <div>
-            <button disabled={props.isTitleInWatchlist} onClick={()=>{
+            <div id="infoViewButtons">
+                <button disabled={props.isTitleInWatchlist} onClick={()=>{
                     props.titleAdded(props.title)
                     document.getElementById("notifyUser").style.right = "0px"
                     setTimeout(function(){
                         document.getElementById("notifyUser").style.right = "-300px"
                     }, 2000);
-                }}>Add to watchlist!
+                    }}>Add to watchlist!
                 </button>
-                <button onClick={()=>window.location.hash="#search"}>Cancel</button>
+                <button disabled={!props.isTitleInWatchlist} onClick={()=>
+                    props.removeTitle(props.title)}>Remove from watchlist
+                </button>
             </div>
         </div>
     );
@@ -38,7 +39,8 @@ function InformationView(props) {
         if(props.trailer[0] !== undefined) {
             return props.trailer[0].key;
         } else {
-            return null;
+            //don't ask
+            return "dQw4w9WgXcQ";
         }
     }
 

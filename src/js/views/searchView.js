@@ -5,8 +5,8 @@ var currentList = "watchlistResult"
 function SearchFormView(props) {
     return (
         <div>
-            <label>Search movies or series </label>
-            <input id="searchBox" onChange={event => props.onText(event.target.value)} />
+            <h3 class ="searchHeader">Search movies or series </h3>
+            <input id="searchBox" placeholder="enter title..." onChange={event => props.onText(event.target.value)} />
             <select onChange={event => props.onSearchType(event.target.value)}>
                 <option key="Choose" selected hidden>Choose:</option>
                 {props.options.map(function (opt) { return <option key={opt}>{opt}</option> })}
@@ -33,7 +33,7 @@ function SearchResultsView(props) {
                             props.movieChosen(card.id);
                         }
                     }}>
-                    <img src={"https://image.tmdb.org/t/p/w500/" + (card.profile_path || card.poster_path)} height={100} width={70} />
+                    <img class="searchPoster" src={"https://image.tmdb.org/t/p/w500/" + (card.profile_path || card.poster_path)} height={100} width={70} />
                     <div class="resultTitle">{card.title || card.name}</div>
                 </span>)}
         </div>

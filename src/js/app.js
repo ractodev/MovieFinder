@@ -1,21 +1,4 @@
 function RenderTest(){ console.log("Vue sub-component render test"); return false; }
-/*function App(props){
-     return  ( 
-          <div class="flexParent">
-               <div class="watchlistResult" id = "watchlistResult">
-                    <WatchlistPresenter model={props.model}/>
-               </div>
-               <div class="detailedResults">
-                    <DetailsPresenter model={props.model}/>
-               </div>
-               <div class="searchResults">
-                    <SearchPresenter model={props.model}/>
-               </div>
-               <RenderTest />
-
-          </div>  
-     );
-}*/
 
 function App(props){
     defaultRoute();
@@ -32,9 +15,6 @@ function App(props){
                 <div class="moreInfo">
                     <Show hash="#info"><InformationPresenter model={props.model}/></Show>
                 </div>
-                <div class="detailedResults">
-                    <Show hash="#details"><DetailsPresenter model={props.model}/></Show>
-                </div>
                 <div class="searchResults">
                     <Show hash="#search"><SearchPresenter model={props.model}/></Show>
                 </div>
@@ -48,7 +28,7 @@ function App(props){
 }
 
 function defaultRoute(){
-    const check = ["#search", "#details", "#info","#watchlist", "historylist"]
+    const check = ["#search", "#info","#watchlist", "historylist"]
         .find((knownRoute)=> knownRoute === window.location.hash)
     if(check === undefined ){
         window.location.hash="#search";

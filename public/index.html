@@ -16,9 +16,12 @@
 
 </head>
 <body>
-    <h1 class="leftMargin">Welcome To MovieFinder!
-        <button class="logButton" onClick ="mainApp.logout()">Sign out</button>
-    </h1>
+    <div class="page-wrapper">
+        <h1 class="leftMargin">Welcome To MovieFinder!</h1>
+        <div class="btn-round btn-normal"></div>
+        <div class="btn-round btn-pressed"></div>
+        <div class="btn-wide btn-normal" onClick ="mainApp.logout()">Sign out</div>
+    </div>
     <div id="app"></div>
 </body>
     <!-- API -->
@@ -30,7 +33,6 @@
     <!-- View -->
     <script src="../src/js/views/searchView.js" type="text/jsx"></script>
     <script src="../src/js/views/promiseNoData.js" type="text/jsx"></script>
-    <script src="../src/js/views/detailsView.js" type="text/jsx"></script>
     <script src="../src/js/views/informationView.js" type="text/jsx"></script>
     <script src="../src/js/views/watchlistView.js" type="text/jsx"></script>
     <script src="../src/js/views/historyView.js" type="text/jsx"></script>
@@ -38,7 +40,6 @@
 
     <!-- Presenter -->
     <script src="../src/vuejs/searchPresenter.js" type="text/jsx"></script>
-    <script src="../src/vuejs/detailsPresenter.js" type="text/jsx"></script>
     <script src="../src/vuejs/informationPresenter.js" type="text/jsx"></script>
     <script src="../src/vuejs/watchlistPresenter.js" type="text/jsx"></script>
     <script src="../src/vuejs/historyPresenter.js" type="text/jsx"></script>
@@ -77,4 +78,3 @@
     </script>
 
 </html>
-

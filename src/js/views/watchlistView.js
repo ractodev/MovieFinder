@@ -16,7 +16,7 @@ function WatchlistView(props) {
             }
             currentList = "watchlistResult"
             }
-            }>Watchlist
+            }><span id="watchlistBtnTitle">Watchlist</span>
             </button>
             <div class="watchlistView">
                 <button class="swapButton" onClick={() => {
@@ -32,13 +32,6 @@ function WatchlistView(props) {
                     window.location.hash = "#historylist"}}>History
                 </button>
                 <h3>My Watchlist</h3>
-                <span>
-                    Sort by:
-                    <select /*onChange={event=>props.onSearchType(event.target.value)}*/>
-                        <option key="Choose" selected hidden>List Order</option>
-                        {props.options.map(function (opt) { return <option key={opt}>{opt}</option> })}
-                    </select>
-                </span>
                 <hr></hr>
                 <table class = "watchlistTable">
                     <tbody>
