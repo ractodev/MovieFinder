@@ -19,14 +19,16 @@ class DataModel {
         this.currentTitle = id;
         this.currentTitleType = type;
         this.currentTitleDetails = null;
+        this.moreTitleDetails = null;
+        this.titleTrailer = null;
+        this.similarDetails = null;
+        this.titleProviders = null;
         this.currentTitleError = null;
         this.notifyObservers();
-
-        if (this.currentTitle && (type === "Movie")) {
-            TmdbSource.tmdbGetDetailedMovieInfo(this.currentTitle)
+        if (this.currentTitle) {
+            TmdbSource.tmdbGetTitleDetails(type, this.currentTitle)
                 .then(data => {
                     if (this.currentTitle === id) {
-                        console.log("datamodel data: ", data);
                         this.currentTitleDetails = data;
                         this.notifyObservers();
                     }
@@ -37,18 +39,17 @@ class DataModel {
                         this.notifyObservers();
                     }
                 })
-        } else if (this.currentTitle && (type === "TV Series")) {
-            TmdbSource.tmdbGetDetailedSeriesInfo(this.currentTitle)
+            TmdbSource.tmdbGetDetailedTitleInfo(type, this.currentTitle)
                 .then(data => {
                     if (this.currentTitle === id) {
-                        console.log("datamodel data: ", data);
-                        this.currentTitleDetails = data;
+                        this.moreTitleDetails = data[0];
+                        this.titleTrailer = data[1];
+                        this.titleProviders = data[2];
                         this.notifyObservers();
                     }
                 })
                 .catch(err => {
                     if (this.currentTitle === id) {
-                        this.currentTitleError = err;
                         this.notifyObservers();
                     }
                 })
@@ -80,7 +81,7 @@ class DataModel {
         }
     }
 
-    clearHistorylist(){
+    clearHistorylist() {
         this.historylist = []
         this.notifyObservers()
     }

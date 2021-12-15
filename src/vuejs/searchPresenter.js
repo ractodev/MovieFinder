@@ -44,8 +44,8 @@ const SearchPresenter = {
             {promiseNoData(this.promise, this.data, this.error) ||
             <SearchResultsView searchResults={this.data}
                                searchType={x => this.searchType = x}
-                               movieChosen={movie=>this.model.setCurrentTitle(movie, "Movie")}
-                               seriesChosen={series=>this.model.setCurrentTitle(series, "TV Series")}
+                               movieChosen={movie=>this.model.setCurrentTitle(movie, "movie")}
+                               seriesChosen={series=>this.model.setCurrentTitle(series, "tv")}
                                actorChosen={actor=>{this.promise = TmdbSource.tmdbGetActorAppearence(actor)}}
             />}
         </div>
