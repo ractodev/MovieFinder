@@ -1,7 +1,7 @@
 function InformationView(props) {
     return(
         <div>
-            <h2>{props.title.title || props.title.name} ({shortDateFormat()})
+            <h2>{props.title.title || props.title.name} {shortDateFormat()}
             </h2>
             <div>
                 <img src={"https://image.tmdb.org/t/p/w500/" + props.title.poster_path} height={250} />
@@ -44,9 +44,12 @@ function InformationView(props) {
 
     function checkProviderAvailability() {
         if(props.providers["SE"] !== undefined) {
+            //check if title is available
             if(props.providers["SE"].flatrate !== undefined) {
+                //check if title is available on streaming services
                 return props.providers["SE"].flatrate.map(provider => provider.provider_name);
             } else if (props.providers["SE"].buy !== undefined) {
+                //check if title is available for purchase
                 return props.providers["SE"].buy.map(provider => provider.provider_name);
             } else {
                 return " No information on providers available.";
@@ -59,9 +62,9 @@ function InformationView(props) {
     function shortDateFormat() {
         //function to trim release date to year only
         if(props.title.release_date) {
-            return props.title.release_date.split('-')[0];
+            return "(" + props.title.release_date.split('-')[0] + ")";
         } else if(props.title.first_air_date) {
-            return props.title.first_air_date.split('-')[0];
+            return "(" + props.title.first_air_date.split('-')[0] + ")";
         } else {
             return "unknown";
         }

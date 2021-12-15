@@ -27,13 +27,13 @@ const SearchPresenter = {
                 onSearch={()=>{
                         if(this.searchType === "Movie"){
                             this.promise = TmdbSource.tmdbSearchMovie(this.searchQuery);
-                        }else if(this.searchType === "TV Series"){
+                        } else if(this.searchType === "TV Series"){
                             this.promise = TmdbSource.tmdbSearchSeries(this.searchQuery);
-                        }else if(this.searchType === "Actor Appearence"){
+                        } else if(this.searchType === "Actor Appearence"){
                             this.promise = TmdbSource.tmdbSearchActor(this.searchQuery);
-                        }/*else if(this.searchType === "Year"){
-                            //TODO
-                        }else if(this.searchType === "Genre"){
+                        } else {
+                            this.promise = TmdbSource.tmdbGetPopular();
+                        }/*else if(this.searchType === "Genre"){
                             //TODO
                         }else{
 
