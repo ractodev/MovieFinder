@@ -25,7 +25,15 @@ const SearchPresenter = {
                 onText={x=>this.searchQuery = x}
                 onSearchType={x => this.searchType = x}
                 onSearch={()=>{
-                        if(this.searchType === "Movie"){
+                        if(this.searchType === "" || this.searchQuery === ""){
+                            this.model.action = "Wrong input! Make sure to enter a title and chose a category";
+                            document.getElementById("notifyUser").style.right = "0px"
+                            setTimeout(function () {
+                            document.getElementById("notifyUser").style.right = "-300px"
+                        }, 3000);
+                        }
+
+                        else if(this.searchType === "Movie"){
                             this.promise = TmdbSource.tmdbSearchMovie(this.searchQuery);
                         } else if(this.searchType === "TV Series"){
                             this.promise = TmdbSource.tmdbSearchSeries(this.searchQuery);
