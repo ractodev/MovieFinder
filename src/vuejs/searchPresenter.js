@@ -21,12 +21,12 @@ const SearchPresenter = {
     },
     render(){
         return <div>
-            <SearchFormView options={["Movie", "TV Series", "Actor Appearence"/*, "Year", "Genre", "Rating"*/]}
+            <SearchFormView options={["Movie", "TV Series", "Actor Appearence"]}
                 onText={x=>this.searchQuery = x}
                 onSearchType={x => this.searchType = x}
                 onSearch={()=>{
                         if(this.searchType === "" || this.searchQuery === ""){
-                            this.model.action = "Wrong input! Make sure to enter a title and chose a category";
+                            this.model.action = "Wrong input! Make sure to enter a title and choose a category";
                             document.getElementById("notifyUser").style.right = "0px"
                             setTimeout(function () {
                             document.getElementById("notifyUser").style.right = "-300px"
