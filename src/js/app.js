@@ -12,10 +12,10 @@ function App(props){
                 <Show hash="#historylist"><HistoryPresenter model={props.model}/></Show>
             </div>
             <div class="leftMargin">
-                <div class="moreInfo">
+                <div className="moreInfo">
                     <Show hash="#info"><InformationPresenter model={props.model}/></Show>
                 </div>
-                <div class="searchResults">
+                <div className="searchResults">
                     <Show hash="#search"><SearchPresenter model={props.model}/></Show>
                 </div>
             </div>

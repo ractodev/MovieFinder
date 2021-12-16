@@ -28,7 +28,8 @@ button:hover {
 
 .introduction {
     width: 80%;
-    margin-left: 50px;
+    margin-left: 13%;
+
 }
 
 .search {
@@ -308,7 +309,8 @@ button:hover {
 }
 
 .leftMargin {
-    margin-left: 30px;
+    margin-left: 12%;
+    display: flex;
 }
 
 .title {
