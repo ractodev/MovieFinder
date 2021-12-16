@@ -1,6 +1,6 @@
 function InformationPresenter(props){
-    return promiseNoData(props.model.currentTitle, props.model.moreTitleDetails, props.model.currentTitleError) ||
-        <InformationView title = {props.model.moreTitleDetails}
+    return promiseNoData(props.model.currentTitle, props.model.currentTitleDetails, props.model.currentTitleError) ||
+        <InformationView title = {props.model.currentTitleDetails}
                          trailer = {props.model.titleTrailer}
                          providers = {props.model.titleProviders}
                          isTitleInWatchlist={props.model.watchlist.find(title=>title.id === props.model.currentTitle)}

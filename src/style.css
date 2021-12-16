@@ -103,6 +103,22 @@ button {
     display: inline-block;
     width: 80%;
 }
+.informationView .providerInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.informationView .providerInfo #providerLogo {
+    display: inline-block;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-left: 5px;
+    z-index: 1;
+    height: 1em;
+}
+.informationView .providers span {
+    font-weight: bold;
+}
 .informationView #whereToWatch {
     margin: 10px;
 }

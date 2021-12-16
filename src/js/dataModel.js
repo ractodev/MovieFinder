@@ -19,32 +19,17 @@ class DataModel {
         this.currentTitle = id;
         this.currentTitleType = type;
         this.currentTitleDetails = null;
-        this.moreTitleDetails = null;
-        this.titleTrailer = null;
-        this.similarDetails = null;
-        this.titleProviders = null;
+        this.titleTrailer = [];
+        this.titleProviders = [""];
         this.currentTitleError = null;
         this.notifyObservers();
         if (this.currentTitle) {
-            TmdbSource.tmdbGetTitleDetails(type, this.currentTitle)
-                .then(data => {
-                    if (this.currentTitle === id) {
-                        this.currentTitleDetails = data;
-                        this.notifyObservers();
-                    }
-                })
-                .catch(err => {
-                    if (this.currentTitle === id) {
-                        this.currentTitleError = err;
-                        this.notifyObservers();
-                    }
-                })
             TmdbSource.tmdbGetDetailedTitleInfo(type, this.currentTitle)
                 .then(data => {
                     if (this.currentTitle === id) {
-                        this.moreTitleDetails = data[0];
-                        this.titleTrailer = data[1];
-                        this.titleProviders = data[2];
+                        this.currentTitleDetails = data[0];
+                        this.titleTrailer = this.findTrailerKey(data[1]);
+                        this.titleProviders = this.checkProviderAvailability(data[2]["SE"]);
                         this.notifyObservers();
                     }
                 })
@@ -53,6 +38,33 @@ class DataModel {
                         this.notifyObservers();
                     }
                 })
+        }
+    }
+
+    findTrailerKey(videoData) {
+        if (videoData.length > 0) {
+            let trailer = videoData.find(video => (video.type === "Trailer"));
+            if (trailer) {
+                //official trailer was found
+                return trailer.key;
+            } else {
+                //otherwise, return arbitrary video
+                return videoData[0].key;
+            }
+        } else {
+            //no videos? oh yeah, don't ask what this is
+            return "dQw4w9WgXcQ";
+        }
+    }
+
+    checkProviderAvailability(providerData) {
+        //check if swedish providers are available
+        if (providerData.flatrate !== undefined) {
+            //title available on streaming services
+            return providerData.flatrate;
+        } else if (providerData.buy !== undefined) {
+            //title available for purchase
+            return providerData.buy;
         }
     }
 
@@ -85,7 +97,6 @@ class DataModel {
         this.historylist = []
         this.notifyObservers()
     }
-
 
     addObserver(callback) { this.observers = [...this.observers, callback] }
     removeObserver(callback) { this.observers = this.observers.filter(x => x !== callback) }

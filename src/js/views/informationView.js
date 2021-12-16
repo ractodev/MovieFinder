@@ -6,8 +6,7 @@ function InformationView(props) {
                 <img src={"https://image.tmdb.org/t/p/w500/" + props.title.poster_path} height={250} />
             </div>
             <div id="trailer">
-                <iframe id="embed" src={"https://www.youtube.com/embed/" + checkTrailerAvailability() + "?autoplay=1&mute=1"}>
-                </iframe>
+                <iframe id="embed" src={"https://www.youtube.com/embed/" + props.trailer + "?autoplay=1&mute=1"}></iframe>
             </div>
             <div id="overview">
                 {props.title.overview}
@@ -16,8 +15,16 @@ function InformationView(props) {
                 <img src={"/src/js/assets/imdb_logo.png"} id="imdbLogo"/>
                 <span>Rating: {(props.title.vote_average || "unrated")}</span>
             </div>
-            <div id="providers">
-                Where to watch: {" " + checkProviderAvailability()}
+            <div class="providers">
+                <span>Where to watch:</span>
+                <div>
+                    {props.providers.map(provider => 
+                    <div class="providerInfo">
+                        <div>{(provider.provider_name || "No provider available.")}</div>
+                        <img id ="providerLogo" src={"https://image.tmdb.org/t/p/w500/" + provider.logo_path} alt=""/>
+                    </div>
+                    )}
+                </div>
             </div>
             <div id="infoViewButtons">
                 <button disabled={props.isTitleInWatchlist} onClick={()=>{
@@ -34,32 +41,6 @@ function InformationView(props) {
             </div>
         </div>
     );
-
-    function checkTrailerAvailability() {
-        if(props.trailer[0] !== undefined) {
-            return props.trailer[0].key;
-        } else {
-            //don't ask
-            return "dQw4w9WgXcQ";
-        }
-    }
-
-    function checkProviderAvailability() {
-        if(props.providers["SE"] !== undefined) {
-            //check if title is available
-            if(props.providers["SE"].flatrate !== undefined) {
-                //check if title is available on streaming services
-                return props.providers["SE"].flatrate.map(provider => provider.provider_name);
-            } else if (props.providers["SE"].buy !== undefined) {
-                //check if title is available for purchase
-                return props.providers["SE"].buy.map(provider => provider.provider_name);
-            } else {
-                return " No information on providers available.";
-            }
-        } else {
-            return " No information on providers available.";
-        }
-    }
 
     function shortDateFormat() {
         //function to trim release date to year only
