@@ -19,7 +19,7 @@ function App(props){
                     <Show hash="#search"><SearchPresenter model={props.model}/></Show>
                 </div>
             </div>
-            <div class={props.model.actionN === "Added"? "notifyUser":"notifyRemUser"} id="notifyUser">
+            <div class={props.model.actionCSS === "Added"? "notifyUser":"notifyRemUser"} id="notifyUser">
                 <Show hash="#notify"><NotifyPresenter model={props.model}/></Show>
             </div>
             <RenderTest/>

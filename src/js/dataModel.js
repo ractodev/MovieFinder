@@ -1,5 +1,5 @@
 class DataModel {
-    constructor(titles = [], watchlist = [], currentTitle = null, observers = [], historylist = [], movieTitle = "", action = null, actionN = null) {
+    constructor(titles = [], watchlist = [], currentTitle = null, observers = [], historylist = [], movieTitle = "", action = null, actionCSS = "") {
         this.titles = titles;
         this.watchlist = watchlist;
         this.setCurrentTitle(currentTitle);
@@ -7,7 +7,7 @@ class DataModel {
         this.historylist = historylist;
         this.movieTitle = movieTitle;
         this.action = action;
-        this.actionN = actionN;
+        this.actionCSS = actionCSS;
     }
 
     setTitles(watchlist) {

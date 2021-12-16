@@ -27,6 +27,7 @@ const SearchPresenter = {
                 onSearch={()=>{
                         if(this.searchType === "" || this.searchQuery === ""){
                             this.model.action = "Wrong input! Make sure to enter a title and choose a category";
+                            this.model.actionCSS = "Error"
                             document.getElementById("notifyUser").style.right = "0px"
                             setTimeout(function () {
                             document.getElementById("notifyUser").style.right = "-300px"

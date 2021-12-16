@@ -7,7 +7,7 @@ function InformationPresenter(props){
                          titleAdded={title=>props.model.addToWatchlist(title)}
                          removeTitle={title=>props.model.removeFromWatchlist(title)}
                          action={x => props.model.action = x}
-                         actionN={x => props.model.actionN = x}
+                         actionCSS={x => props.model.actionCSS = x}
                          movieTitle = {props.model.currentTitleDetails.title}
         />
 }

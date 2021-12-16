@@ -33,7 +33,7 @@ function InformationView(props) {
             <div id="infoViewButtons">
                 <button disabled={props.isTitleInWatchlist} onClick={() => {
                     props.titleAdded(props.title)
-                    props.actionN("Added")
+                    props.actionCSS("Added")
                     props.action("Added " + props.movieTitle + " to watchlist")
                     document.getElementById("notifyUser").style.right = "0px"
                     setTimeout(function () {
@@ -43,7 +43,7 @@ function InformationView(props) {
                 </button>
                 <button disabled={!props.isTitleInWatchlist} onClick={() => {
                     props.removeTitle(props.title)
-                    props.actionN("Removed")
+                    props.actionCSS("Removed")
                     props.action("Removed " + props.movieTitle + " from watchlist")
                     document.getElementById("notifyUser").style.right = "0px"
                     setTimeout(function () {
