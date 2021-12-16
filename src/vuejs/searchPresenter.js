@@ -41,11 +41,7 @@ const SearchPresenter = {
                             this.promise = TmdbSource.tmdbSearchActor(this.searchQuery);
                         } else {
                             this.promise = TmdbSource.tmdbGetPopular();
-                        }/*else if(this.searchType === "Genre"){
-                            //TODO
-                        }else{
-
-                        }*/
+                        }
                     }
                 }
             /> 
