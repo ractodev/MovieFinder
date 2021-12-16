@@ -29,20 +29,28 @@ function WatchlistView(props) {
                         document.getElementById("historyResult").style.transition = "0.5s"
                     }, 10)
                     currentList = "historyResult"
-                    window.location.hash = "#historylist"}}>History
+                    window.location.hash = "#historylist"}}>Seen List
                 </button>
                 <h3>My Watchlist</h3>
                 <hr></hr>
                 <table class = "watchlistTable">
                     <tbody>
                         {[...props.watchlist].map(title => <tr class = "watchlistTr" key={title.title}>
+                            <td><button class="RemoveButt" onClick={()=>props.removeTitle(title)}>x</button></td>
                             <td><img src={"https://image.tmdb.org/t/p/w500/" + title.poster_path} height={50} /></td>
                             <td class="watchlistTitle">
                                 {title.title || title.name}
                             </td>
-                                <button class="Rbutton" onClick={()=>props.removeTitle(title)}>Remove</button>
-                                <button class="Rbutton" onClick={()=>{props.addToHistorylist(title);
-                                    props.removeTitle(title) }}>Seen</button>
+                                <button class="Rbutton" onClick={()=>{
+                                    props.addToHistorylist(title);
+                                    props.removeTitle(title)
+                                    props.actionCSS("Info")
+                                    props.action("Marked " + (title.title || title.name) + " as seen!")
+                                    document.getElementById("notifyUser").style.right = "0px"
+                                    setTimeout(function () {
+                                        document.getElementById("notifyUser").style.right = "-300px"
+                                    }, 3000); 
+                                }}>Seen</button>
                         </tr>)}
                     </tbody>
                 </table>
