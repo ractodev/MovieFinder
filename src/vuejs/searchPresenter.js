@@ -30,8 +30,8 @@ const SearchPresenter = {
                             this.model.actionCSS = "Error"
                             document.getElementById("notifyUser").style.right = "0px"
                             setTimeout(function () {
-                            document.getElementById("notifyUser").style.right = "-300px"
-                        }, 3000);
+                                document.getElementById("notifyUser").style.right = "-300px"
+                            }, 4000);
                         }
 
                         else if(this.searchType === "Movie"){

@@ -375,7 +375,8 @@ button:hover {
 }
 
 .notifyUser{
-    background:rgba(144, 218, 70, 0.5);
+    background:rgba(144, 218, 70, 0.9);
+    font-weight: bold;
     padding: 20px 40px;
     width: 200px;
     position: fixed;
@@ -389,7 +390,8 @@ button:hover {
 }
 
 .notifyRemUser {
-    background:rgba(178, 0, 0, 0.5);
+    background:#940101e6;
+    font-weight: bold;
     padding: 20px 40px;
     width: 200px;
     position: fixed;
@@ -397,8 +399,8 @@ button:hover {
     top: 10px;
     overflow: hidden;
     border-radius: 4px;
-    border-left: 8px solid firebrick;
-    border-right: 8px solid firebrick;
+    border-left: 8px solid #5f1313;
+    border-right: 8px solid #5f1313;
     transition: 0.5s;
 }
 
