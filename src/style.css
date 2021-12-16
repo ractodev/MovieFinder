@@ -260,7 +260,7 @@ button:hover {
 .RemoveButt {
     color:white;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 17px;
     margin-left: 0px;
     margin-right: 5px;
     padding: 5px 5px;
@@ -273,7 +273,7 @@ button:hover {
     cursor: pointer;
 }
 
-.Rbutton:hover {
+.Rbutton:hover, .RemoveButt:hover {
     background: #f7f7f7;
     border: 2px solid #8b8b8b;
     color:black;
