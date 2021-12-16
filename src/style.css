@@ -316,6 +316,17 @@ button:hover {
     display: flex;
 }
 
+.leftMargin2 {
+    margin-left: 12%;
+    display: flex;
+}
+
+.leftMargin2:hover {
+    color: #dba506;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .title {
     background-color: azure;
     font-size: 20px;
@@ -394,11 +405,7 @@ button:hover {
     align-items: center;
     background-color: #e0e0e0;
 }
-.page-wrapper :hover {
-    color: #dba506;
-    font-weight: bold;
-    cursor: pointer;
-}
+
 .btn-wide {
     border-radius: 50px;
     margin: 10px;

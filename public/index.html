@@ -14,16 +14,16 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>const React={createElement:Vue.h};</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="../src/style.css">
 
 </head>
 <body>
     <div class="page-wrapper">
-        <h1 class="leftMargin">Welcome To MovieFinder!</h1>
-        <div class="btn-round btn-normal"></div>
-        <div class="btn-round btn-pressed"></div>
+        <h1 class="leftMargin2">Welcome To MovieFinder!</h1>
         <div class="btn-wide btn-normal" onClick ="mainApp.logout()">Sign out</div>
     </div>
+    <script>$('.leftMargin2').click(()=> window.location.reload())</script>
     <p class="introduction">
         Search information such as trailer, main plot and provider(s) on your favourite movies and tv series!
      </p>
