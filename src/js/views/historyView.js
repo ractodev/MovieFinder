@@ -7,31 +7,33 @@ function HistoryView(props) {
                 document.getElementById("historyResult").style.transition = "0s"
                 document.getElementById("watchlistResult").style.left = "0px"
                 document.getElementById("historyResult").style.left = "-303px"
-                setTimeout(()=>{
+                setTimeout(() => {
                     document.getElementById("watchlistResult").style.transition = "0.5s"
                     document.getElementById("historyResult").style.transition = "0.5s"
                 }, 10)
                 currentList = "watchlistResult"
-                window.location.hash = "#watchlist"}}>Watchlist
+                window.location.hash = "#watchlist"
+            }}>Watchlist
             </button>
             <h3>My History</h3>
             <span>
-                 <button disabled={!props.isTitleInHistory} className="clearButton" onClick={() => props.clearHistory()}>
-                     Clear history
-                 </button>
+                <button disabled={!props.isTitleInHistory} className="clearButton" onClick={() => props.clearHistory()}>
+                    Clear history
+                </button>
             </span>
             <hr></hr>
-            <table class = "watchlistTable">
+            <table class="watchlistTable">
                 <tbody>
-                {[...props.historyList].map(obj => <tr class="watchlistTr" key={obj.title}>
-                    <td><img src={"https://image.tmdb.org/t/p/w500/" + obj.poster_path} height={50} /></td>
-                    <td class = "watchlistTitle">
-                        {obj.title || obj.name}
-                    </td>
-                        <button onClick={() => {props.addToWatchlist(obj);
-                        props.removeFromHistory(obj)}} className="Rbutton">Add back</button>
-
-                </tr>)}
+                    {[...props.historyList].map(obj => <tr class="watchlistTr" key={obj.title}>
+                        <td><img src={"https://image.tmdb.org/t/p/w500/" + obj.poster_path} height={50} /></td>
+                        <td class="watchlistTitle">
+                            {obj.title || obj.name}
+                        </td>
+                        <button onClick={() => {
+                            props.addToWatchlist(obj);
+                            props.removeFromHistory(obj)
+                        }} className="Rbutton">Add back</button>
+                    </tr>)}
                 </tbody>
             </table>
         </div>
