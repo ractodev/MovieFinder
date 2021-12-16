@@ -319,11 +319,15 @@ button:hover {
 .leftMargin2 {
     margin-left: 12%;
     display: flex;
+    background-color:#dba506;
+    color: black;
+    font-size: 42px;
 }
 
 .leftMargin2:hover {
-    color: #dba506;
-    font-weight: bold;
+    background: darkgoldenrod;
+    border: 1px solid #8b8b8b;
+    color:black;
     cursor: pointer;
 }
 
