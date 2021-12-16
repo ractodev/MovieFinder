@@ -7,11 +7,11 @@ function SearchFormView(props) {
         <div class="search">
             <h3 class ="searchHeader">Search movies or series </h3>
             <input id="searchBox" placeholder="enter title..." onChange={event => props.onText(event.target.value)}/>
+            <button id="clearButton" onclick={"document.getElementById('searchBox').value = ''"}>Clear</button>
             <select id="selector"onChange={event => props.onSearchType(event.target.value)}>
                 <option key="Choose" selected hidden>Choose:</option>
                 {props.options.map(function (opt) { return <option key={opt}>{opt}</option> })}
             </select>
-            <button onclick={"document.getElementById('searchBox').value = ''"}>X</button>
             <button class="searchButton" onClick={() => props.onSearch()}>Search!</button>
         </div>
     );

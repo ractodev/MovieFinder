@@ -33,6 +33,7 @@ button:hover {
 
 .search {
     padding: 10px;
+    display: inline-block;
 }
 .searchResult {
     border-radius: 10px;
@@ -47,7 +48,6 @@ button:hover {
 .cardView :hover {
     cursor: pointer;
     color: #dba506;
-    font-weight: bold;
 }
 .searchHeader {
     display: inline-block;
@@ -75,8 +75,11 @@ button:hover {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+#clearButton {
+    box-shadow: -3px -3px 7px #f5f5f5, 3px 3px 7px #bbc3cc;
+}
 .searchButton {
-    margin-left: 0px;
+    margin-left: 10px;
     box-shadow: -3px -3px 7px #f5f5f5, 3px 3px 7px #bbc3cc;
 }
 
