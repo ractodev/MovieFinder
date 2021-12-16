@@ -28,10 +28,9 @@ function HistoryView(props) {
                     <td class = "watchlistTitle">
                         {obj.title || obj.name}
                     </td>
-                    <td class = "deleteButtonRow">
                         <button onClick={() => {props.addToWatchlist(obj);
-                        props.removeFromHistory(obj)}} className="deleteButtonRow">Add back</button>
-                    </td>
+                        props.removeFromHistory(obj)}} className="Rbutton">Add back</button>
+
                 </tr>)}
                 </tbody>
             </table>

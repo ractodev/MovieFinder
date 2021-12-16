@@ -47,6 +47,7 @@ const SearchPresenter = {
                                movieChosen={movie=>this.model.setCurrentTitle(movie, "movie")}
                                seriesChosen={series=>this.model.setCurrentTitle(series, "tv")}
                                actorChosen={actor=>{this.promise = TmdbSource.tmdbGetActorAppearence(actor)}}
+                               movieTitle={title => this.model.movieTitle = title}
             />}
         </div>
     }

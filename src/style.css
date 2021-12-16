@@ -181,6 +181,13 @@ button:hover {
     border-radius: 10px  10px  0px  0px;
     color: white;
 }
+.openButton:hover {
+    background: darkgoldenrod;
+    border: 1px solid #8b8b8b;
+    color:white;
+    cursor: pointer;
+}
+
 #watchlistBtnTitle {
     font-weight: bold;
     letter-spacing: 1px;
@@ -189,6 +196,7 @@ button:hover {
     text-align: center;
 }
 .watchlistTable{
+
     border-collapse: separate;
     border-spacing: 0 1em; 
     width: 285px;
@@ -211,6 +219,11 @@ button:hover {
 .deleteButtonRow{
     width: 50px;
 }
+.deleteButtonRow:hover {
+    background: #f7f7f7;
+    border: 2px solid #8b8b8b;
+    color:black;
+}
 
 .historyView h3 {
     text-align: center;
@@ -223,7 +236,37 @@ button:hover {
     width: 45px;
     height: 25px;
     border: rgb(109, 109, 109) 1px solid;
+
 }
+.Rbutton {
+    color:white;
+    display: block;
+    margin: 5px;
+    padding: 5px 5px;
+    font: 100 75% langdon;
+    background: lightslategrey;
+    border: 2px solid black;
+    float: right;
+    width: 55px;
+    transition: 75ms ease-in-out;
+    cursor: pointer;
+}
+
+.Rbutton:hover {
+    background: #f7f7f7;
+    border: 2px solid #8b8b8b;
+    color:black;
+}
+
+.infoButton {
+    transition: 50ms ease-in-out;
+    cursor: pointer;
+}
+.infoButton:hover {
+     border: 2px solid #8b8b8b;
+     color:black;
+ }
+
 
 .addToHistoryRow{
     position: absolute;
@@ -236,6 +279,13 @@ button:hover {
     position: absolute;
     right: -40px;
     top: 56px;
+    transition: 75ms ease-in-out;
+    cursor: pointer;
+}
+.clearButton:hover {
+    background: #f7f7f7;
+    border: 2px solid #8b8b8b;
+    color:black;
 }
 .swapButton{
     margin-right: 50px;
@@ -243,6 +293,11 @@ button:hover {
     right: -40px;
     top: 10px;
 
+}
+.swapButton:hover {
+    background: #f7f7f7;
+    border: 2px solid #8b8b8b;
+    color:black;
 }
 .overview {
     width: 80%;
@@ -306,9 +361,23 @@ button:hover {
     transition: 0.5s;
 }
 
+.notifyRemUser {
+    background:rgba(178, 0, 0, 0.5);
+    padding: 20px 40px;
+    width: 200px;
+    position: fixed;
+    right: -300px;
+    top: 10px;
+    overflow: hidden;
+    border-radius: 4px;
+    border-left: 8px solid firebrick;
+    border-right: 8px solid firebrick;
+    transition: 0.5s;
+}
+
 .msg{
     padding: 0 10px;
-    font-size: 18px;
+    font-size: 20px;
     font-style: italic;
     color: #1a1a1d;
 }
@@ -334,7 +403,14 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 75ms ease-in-out;
+    cursor: pointer;
 }
+.btn-wide:hover {
+    border: 1px solid #8b8b8b;
+    color:black;
+}
+
 .btn-normal {
     box-shadow: -3px -3px 7px #f5f5f5, 3px 3px 7px #bbc3cc;
 }

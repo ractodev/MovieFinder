@@ -5,5 +5,9 @@ function InformationPresenter(props){
                          providers = {props.model.titleProviders}
                          isTitleInWatchlist={props.model.watchlist.find(title=>title.id === props.model.currentTitle)}
                          titleAdded={title=>props.model.addToWatchlist(title)}
-                         removeTitle={title=>props.model.removeFromWatchlist(title)}/>
+                         removeTitle={title=>props.model.removeFromWatchlist(title)}
+                         action={x => props.model.action = x}
+                         actionN={x => props.model.actionN = x}
+                         movieTitle = {props.model.currentTitleDetails.title}
+        />
 }

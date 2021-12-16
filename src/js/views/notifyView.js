@@ -1,7 +1,7 @@
-function NotifyView(){
+function NotifyView(props){
     return(
         <div class="notifyView">
-            <span class="msg">Added title to watchlist!</span>
+            <span class="msg">{props.action}</span>
         </div>
     );
 }

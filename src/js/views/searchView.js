@@ -32,6 +32,7 @@ function SearchResultsView(props) {
                         } else {
                             //movie was selected
                             props.movieChosen(card.id);
+                            props.movieTitle(card.title)
                         }
                     }}>
                     <img class="searchPoster" src={"https://image.tmdb.org/t/p/w500/" + (card.profile_path || card.poster_path)} height={100} width={70} />
