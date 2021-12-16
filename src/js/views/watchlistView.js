@@ -41,7 +41,7 @@ function WatchlistView(props) {
                                 {title.title || title.name}
                             </td>
                             <td class = "deleteButtonRow">
-                                <button class="deleteButton" onClick={()=>props.removeTitle(title)}>x</button></td>
+                                <button class="deleteButton" onClick={()=>props.removeTitle(title)}>X</button></td>
                             <td class = "addToHistoryRow">
                                 <button class="addToHistory" onClick={()=>{props.addToHistorylist(title);
                                     props.removeTitle(title) }}>Seen</button></td>

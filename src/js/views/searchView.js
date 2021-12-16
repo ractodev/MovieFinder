@@ -4,21 +4,22 @@ var currentList = "watchlistResult"
 
 function SearchFormView(props) {
     return (
-        <div>
+        <div class="search">
             <h3 class ="searchHeader">Search movies or series </h3>
-            <input id="searchBox" placeholder="enter title..." onChange={event => props.onText(event.target.value)} />
-            <select onChange={event => props.onSearchType(event.target.value)}>
+            <input id="searchBox" placeholder="enter title..." onChange={event => props.onText(event.target.value)}/>
+            <select id="selector"onChange={event => props.onSearchType(event.target.value)}>
                 <option key="Choose" selected hidden>Choose:</option>
                 {props.options.map(function (opt) { return <option key={opt}>{opt}</option> })}
             </select>
-            <button id="searchButton" class="imageDiv" onClick={() => props.onSearch()}>Search!</button>
+            <button onclick={"document.getElementById('searchBox').value = ''"}>X</button>
+            <button class="searchButton" onClick={() => props.onSearch()}>Search!</button>
         </div>
     );
 }
 
 function SearchResultsView(props) {
     return (
-        <div>
+        <div class="cardView">
             {props.searchResults.filter(result => (result.poster_path !== null) && (result.profile_path !== null)).sort(comparePopularity).map(card =>
                 <span class="searchResult" key={card.id}
                     onClick={() => {

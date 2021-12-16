@@ -3,6 +3,7 @@ function HistoryPresenter(props){
                         options={["Last seen", "First seen"]}
                         clearHistory={() => props.model.clearHistorylist()}
                         addToWatchlist={title=>props.model.addToWatchlist(title)}
-                        removeFromHistory = { title=>props.model.removeFromHistorylist(title) }
+                        removeFromHistory = { title=>props.model.removeFromHistorylist(title)}
+                        isTitleInHistory={props.model.historylist.length !== 0}
     />
 }

@@ -1,5 +1,5 @@
 function InformationView(props) {
-    return(
+    return (
         <div class="informationView">
             <h2>{props.title.title || props.title.name} {shortDateFormat()}</h2>
             <div id="poster">
@@ -12,30 +12,34 @@ function InformationView(props) {
                 {props.title.overview}
             </div>
             <div id="rating">
-                <img src={"/src/js/assets/imdb_logo.png"} id="imdbLogo"/>
-                <span>Rating: {(props.title.vote_average || "unrated")}</span>
+                <img src={"/src/js/assets/imdb_logo.png"} id="imdbLogo" />
+                <span>Rating: {(props.title.vote_average || "Unrated.")}</span>
             </div>
             <div class="providers">
                 <span>Where to watch:</span>
                 <div>
-                    {props.providers.map(provider => 
-                    <div class="providerInfo">
-                        <div>{(provider.provider_name || "No provider available.")}</div>
-                        <img id ="providerLogo" src={"https://image.tmdb.org/t/p/w500/" + provider.logo_path} alt=""/>
-                    </div>
+                    {props.providers.map(provider =>
+                        <div class="providerInfo" onClick={() => {
+                            if (provider.provider_name) {
+                                window.open("http://www.google.com/search?q=" + provider.provider_name + "+" + (props.title.title || props.title.name), "new_tab")
+                            }
+                        }}>
+                            <div>{(provider.provider_name || "No information on provider available.")}</div>
+                            <img id="providerLogo" src={"https://image.tmdb.org/t/p/w500/" + provider.logo_path} alt="" />
+                        </div>
                     )}
                 </div>
             </div>
             <div id="infoViewButtons">
-                <button disabled={props.isTitleInWatchlist} onClick={()=>{
+                <button disabled={props.isTitleInWatchlist} onClick={() => {
                     props.titleAdded(props.title)
                     document.getElementById("notifyUser").style.right = "0px"
-                    setTimeout(function(){
+                    setTimeout(function () {
                         document.getElementById("notifyUser").style.right = "-300px"
                     }, 2000);
-                    }}>Add to watchlist!
+                }}>Add to watchlist!
                 </button>
-                <button disabled={!props.isTitleInWatchlist} onClick={()=>
+                <button disabled={!props.isTitleInWatchlist} onClick={() =>
                     props.removeTitle(props.title)}>Remove from watchlist
                 </button>
             </div>
@@ -44,9 +48,9 @@ function InformationView(props) {
 
     function shortDateFormat() {
         //function to trim release date to year only
-        if(props.title.release_date) {
+        if (props.title.release_date) {
             return "(" + props.title.release_date.split('-')[0] + ")";
-        } else if(props.title.first_air_date) {
+        } else if (props.title.first_air_date) {
             return "(" + props.title.first_air_date.split('-')[0] + ")";
         } else {
             return "unknown";
