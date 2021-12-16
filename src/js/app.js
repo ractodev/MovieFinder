@@ -19,7 +19,15 @@ function App(props){
                     <Show hash="#search"><SearchPresenter model={props.model}/></Show>
                 </div>
             </div>
-            <div class={props.model.actionCSS === "Added"? "notifyUser":"notifyRemUser"} id="notifyUser">
+            <div class={(()=>{
+                if(props.model.actionCSS === "Added"){
+                    return "notifyUser"
+                }else if(props.model.actionCSS === "Removed"){
+                    return "notifyRemUser"
+                }else{
+                    return "notifyInfoUser"
+                }
+            })()} id="notifyUser">
                 <Show hash="#notify"><NotifyPresenter model={props.model}/></Show>
             </div>
             <RenderTest/>
