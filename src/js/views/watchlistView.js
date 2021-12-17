@@ -4,12 +4,12 @@ function WatchlistView(props) {
         <div>
             <button class="openButton" id="openButton" onClick={() => {
                 if (document.getElementById(currentList).style.left === "0px") {
-                    document.getElementById(currentList).style.left = "-303px"
+                    document.getElementById(currentList).style.left = "-280px"
                     document.getElementById("openButton").style.left = "0px"
                     window.location.hash = "#search"
                 } else {
                     document.getElementById(currentList).style.left = "0px"
-                    document.getElementById("openButton").style.left = "303px"
+                    document.getElementById("openButton").style.left = "280px"
                     window.location.hash = "#watchlist"
 
                 }
@@ -21,7 +21,7 @@ function WatchlistView(props) {
                 <button class="swapButton" onClick={() => {
                     document.getElementById("watchlistResult").style.transition = "0s"
                     document.getElementById("historyResult").style.transition = "0s"
-                    document.getElementById("watchlistResult").style.left = "-303px"
+                    document.getElementById("watchlistResult").style.left = "-280px"
                     document.getElementById("historyResult").style.left = "0px"
                     setTimeout(() => {
                         document.getElementById("watchlistResult").style.transition = "0.5s"

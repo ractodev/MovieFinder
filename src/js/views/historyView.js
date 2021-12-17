@@ -17,7 +17,7 @@ function HistoryView(props) {
             </button>
             <h3>My History</h3>
             <span>
-                <button disabled={!props.isTitleInHistory} className="clearButton" onClick={() => props.clearHistory()}>
+                <button disabled={props.isHistoryEmpty} className="clearButton" onClick={() => props.clearHistory()}>
                     Clear history
                 </button>
             </span>
