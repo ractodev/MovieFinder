@@ -8,6 +8,10 @@ of which website/movie theater/provider to visit in order to watch a desired mov
 **Link to app:**
 [https://moviefinder-kth.web.app/]
 
+**Set up locally:**
+The only setup needed to run the app locally is to clone the master repository and 
+run the **_login.html_** on a local http server. 
+
 **What we have implemented so far:**
 
 - A login procedure to our website using "sign in with google".
