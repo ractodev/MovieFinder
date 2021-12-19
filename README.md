@@ -3,7 +3,7 @@ A website where users can search for movies, tv series and actors based
 on different search parameters. The users can then create their
 own personal watchlist that they can turn to when they have trouble 
 finding a good movie to watch. The application can also give recommendations
-of which website/movie theater to visit in order to watch a desired movie.
+of which website/movie theater/provider to visit in order to watch a desired movie.
 
 **Link to app:**
 [https://moviefinder-kth.web.app/]
@@ -42,6 +42,22 @@ The database is implemented using Firebase.
 - search as you type.
 - Return to "main-page" function.
 
+**Updated version implements:**
+- Updated the details view
+  - Renamed to information view.
+  - Added trailers.
+  - Added "Where to watch" with corresponding icons.
+  - Added notification when a title is added to/removed from watchlist.
+- Notify user when wrong inputs are made during search.
+- A working history view
+  - User can add titles back to the watchlist
+  - User can clear the whole history
+- Updated watchlist view
+  - User can mark movie as "seen"
+  - User is notified when a title is marked as "seen"
+  - Remove-button is moved to the left to avoid confusion
+- New overall styling of the whole website
+- Return to main-page by pressing the "MovieFinder"-title
 
 **Project file structure:**
 - **Directory public**
@@ -51,6 +67,8 @@ The database is implemented using Firebase.
       initialized, the firebase load/save and the app.js is called.
 - **Directory src**
   - Directory js
+    - Directory assets
+      - Holds images and icons used on the website.
     - Directory firebase
       - **firebaseconfig.js**: configs the firebase.
       - **firebaseModel.js**: handles the save/load of user data.
@@ -58,22 +76,14 @@ The database is implemented using Firebase.
       - **main.js**: handles the logout func. 
     - Directory views
       - Adds all the necessary views and their corresponding functions
-      - Files: detailsView.js, historyView.js, searchView.js, watchlistView.js
+      - Files: informationView.js, historyView.js, searchView.js, watchlistView.js, notifyView.js
       - **promiseNoData.js**: handles logic for promises, data  and error
-    - **apiconfig.js**: configs the API
     - **app.js**: our main js file that handles all presenters.
     - **dataModel.js**: handles data: titles, watchlist, currentTitle, observers and histoyList.
     - **tmdbSOurce.js**: handles the movie database api calls with different param.
-  - Directory vuejs
-    -  Adds all the necessary presenter and their corresponding views
-  - style.cc -> handles all css related code
-  
-
-
-
-**Known issues/problems:**
-- The "cancel"-button in details view doesn't do anything at the moment.
-- The "edit"-button in sidebar and history doesn't do anything at the moment.
-- The options in sidebar and history view doesn't do anything at the moment.
+    - Directory vuejs
+      -  Adds all the necessary presenter and their corresponding views
+    - style.cc -> handles all css related code
+    
 
 
