@@ -25,7 +25,7 @@ function InformationView(props) {
                             }
                         }}>
                             <div>{(provider.provider_name || "No information on provider available.")}</div>
-                            <img id="providerLogo" src={"https://image.tmdb.org/t/p/w500/" + provider.logo_path} alt="" />
+                            {provider.logo_path && <img id="providerLogo" src={"https://image.tmdb.org/t/p/w500/" + provider.logo_path} alt="" />}
                         </div>
                     )}
                 </div>
